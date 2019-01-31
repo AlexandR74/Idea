@@ -14,10 +14,27 @@ public class FitTest {
     }
 
     @Test
+    public void manWeightZeroTet() {
+        Fit fit = new Fit();
+        double weight = fit.manWeight(0);
+        assertThat(weight, closeTo(0, 0.1));
+    }
+
+
+
+
+    @Test
     public void womanWeight() {
         Fit fit = new Fit();
         double weight = fit.womanWeight(170);
         assertThat(weight, closeTo(69.0, 0.1));
+    }
+
+    @Test
+    public void womanWeightZeroTest() {
+        Fit fit = new Fit();
+        double weight = fit.womanWeight(0);
+        assertThat(weight, closeTo(0, 0.1));
     }
 
 

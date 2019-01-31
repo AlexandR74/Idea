@@ -34,6 +34,16 @@ import static org.junit.Assert.*;
         }
 
         @Test
+        public void whetTenDivZeroIsZero()  {
+            Calculator calc = new Calculator();
+            calc.div(10D, 0D);
+            double result = calc.getResult();
+            double expected = 0D;
+            assertThat(result, is(expected));
+        }
+
+
+        @Test
         public void whenFiveMultipleTwoisTen()  {
             Calculator calc = new Calculator();
             calc.multiple(5D, 2D);

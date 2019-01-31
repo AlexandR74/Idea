@@ -13,10 +13,25 @@ public class ConverterTest {
     }
 
     @Test
+    public void testMinusCount() {
+        Converter converter = new Converter();
+        int result = converter.rubleToEuro(-1);
+        assertThat(result, is(0));
+    }
+
+
+    @Test
     public void when60RuToEuroThen1() {
         Converter converter = new Converter();
         int result = converter.rubleToDollar(60);
         assertThat(result, is(1));
+    }
+
+    @Test
+    public void testMinusount() {
+        Converter converter = new Converter();
+        int result = converter.rubleToDollar(-1);
+        assertThat(result, is(0));
     }
 
     @Test
