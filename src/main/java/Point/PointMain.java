@@ -7,6 +7,5 @@ public class PointMain {
 
         double result = a.distanceTo(b);
         System.out.println("Расстояние между точками А и В : " + result);
-
     }
 }
