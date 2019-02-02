@@ -1,4 +1,4 @@
-package Fit;
+package fit;
 
 public class Fit {
 

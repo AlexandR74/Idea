@@ -1,4 +1,4 @@
-package Point;
+package point;
 
 /**
  * @author Gumerov Marat
