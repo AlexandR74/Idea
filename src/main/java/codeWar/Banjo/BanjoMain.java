@@ -21,7 +21,7 @@ public class BanjoMain {
         Banjo name  = new Banjo();
 
         String a = name.areYouPlayingBanjo("Runner");
-       
+
         System.out.println(a);
     }
 }
