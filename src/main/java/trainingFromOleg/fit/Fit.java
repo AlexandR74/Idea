@@ -1,4 +1,4 @@
-package fit;
+package trainingFromOleg.fit;
 
 public class Fit {
 

@@ -1,13 +1,38 @@
-package calcolator;
+/**
+ * The task of the training project from Oleg Aryukov
+ */
+
+
+package trainingFromOleg.calculator;
+
+
+/**
+ * The class describes the behavior of the trainingFromOleg.calculator, namely, operations with numbers.
+ */
+
 
 public class Calculator {
 
+
     private double result;
 
+    /**
+     *
+     * @param first
+     * @param second
+     * method adds two numbers
+     */
     public void add(double first, double second) {
         this.result = first + second;
     }
 
+
+    /**
+     *
+     * @param first
+     * @param second
+     *  the method subtracts the second from the first
+     */
     public void subtract(double first, double second) {
         this.result = first - second;
     }

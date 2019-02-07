@@ -1,4 +1,4 @@
-package converter;
+package trainingFromOleg.converter;
 
 /*
 Конвертер валют

@@ -1,8 +1,5 @@
-package banjo;
+package codeWar.Banjo;
 
-
-
-import java.sql.SQLOutput;
 
 public class BanjoMain {
     public static void main(String[] args) {

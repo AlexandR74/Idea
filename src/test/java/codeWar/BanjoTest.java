@@ -1,4 +1,4 @@
-package banjo;
+package codeWar;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package point;
+package trainingFromOleg.point;
 
 /**
  * @author Gumerov Marat

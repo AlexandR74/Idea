@@ -1,4 +1,4 @@
-package calcolator;
+package trainingFromOleg.calculator;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is; // что он делает?

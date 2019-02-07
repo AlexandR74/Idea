@@ -1,6 +1,8 @@
-package converter;
+package trainingFromOleg.turnArray.converter;
 
 import org.junit.Test;
+import trainingFromOleg.converter.Converter;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
