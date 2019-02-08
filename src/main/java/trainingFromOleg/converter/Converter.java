@@ -1,8 +1,9 @@
-package trainingFromOleg.converter;
-
-/*
-Конвертер валют
+/**
+ * The task of the training project from Oleg Aryukov
  */
+
+
+package trainingFromOleg.converter;
 
 
 public class Converter {

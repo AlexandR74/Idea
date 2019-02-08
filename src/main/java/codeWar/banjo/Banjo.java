@@ -6,11 +6,11 @@
  */
 
 
-package codeWar.Banjo;
+package codeWar.banjo;
 
 
 /**
- * class Banjo  has only one method to solve the problem.
+ * class banjo  has only one method to solve the problem.
  */
 
 public class Banjo {

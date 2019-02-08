@@ -3,7 +3,7 @@
  */
 
 
-package codeWar.Banjo;
+package codeWar.banjo;
 
 
 /**

@@ -1,8 +1,10 @@
-package trainingFromOleg.point;
-
 /**
- * @author Gumerov Marat
+ * The task of the training project from Oleg Aryukov
+ *
  */
+
+
+package trainingFromOleg.point;
 
 
 public class Point {
