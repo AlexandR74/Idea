@@ -34,7 +34,7 @@ public class ArrayChar {
         // compares items
         for (int item=0 ; item < value.length ; item++ ){
 
-            //   System.out.println("data[item] = " + data[item] + " value [item] = " + value[item]);
+            //   System.out.println("data[Item] = " + data[Item] + " value [Item] = " + value[Item]);
 
             if ( value[item] != data[item]){
                 result = false;
