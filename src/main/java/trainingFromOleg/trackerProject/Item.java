@@ -32,4 +32,15 @@ public class Item {
     String [] comments;
 
 
+
+
+
+    public Item(String name, String desc){
+        this.name = name;
+        this.desc = desc;
+    }
+
+
+
+
 }

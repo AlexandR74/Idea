@@ -20,7 +20,7 @@ public class Tracker {
      * Метод реализаущий добавление заявки в хранилище (add)
      * @param item новая заявка
      */
-    public Item add(Item item){
+        public Item add(Item item){
         item.setId(this.generateId());
 
         this.items[this.position++] = item;
@@ -62,12 +62,14 @@ public class Tracker {
 
 
 
+
+
     /**
      * Метод генерирует уникальный ключ для заявки.
      * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
      * @return Уникальный ключ.
      */
-    private String generateId() {
+    private static String generateId() {
 //Реализовать метод генерации.
         Integer  idInt  = (0 + (int) (Math.random() * 10000)); // Правильно ли?
 
@@ -76,4 +78,9 @@ public class Tracker {
         System.out.println("тестовый вывод String id =" +id);
         return id;
     }
+
+
+
+
+
 }
