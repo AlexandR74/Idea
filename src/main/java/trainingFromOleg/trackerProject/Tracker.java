@@ -22,14 +22,19 @@ public class Tracker {
      */
         public Item add(Item item){
         item.setId(this.generateId());
-
         this.items[this.position++] = item;
-
         return item;
     }
 
     // метод replace -- он же  update в астах
     public boolean replace(String id, Item item){
+        //item.getId().equals(tmp.getId()). сравнивать надо так
+        /**
+         * . Метод public boolean replace(String id, Item item)
+         * должен заменить ячейку в массиве this.items.
+         * Для этого необходимо найти ячейку в массиве по id.
+         * Метод должен вернуть boolean результат - удалось ли провести операцию.
+         */
 
         return  false;
     }
