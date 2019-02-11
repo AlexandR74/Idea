@@ -15,10 +15,6 @@ public class Tracker {
 
 
 
-
-
-
-
     //-------------------Методы-----------------------
     /**
      * Метод реализаущий добавление заявки в хранилище (add)
@@ -31,26 +27,6 @@ public class Tracker {
 
         return item;
     }
-
-    /**
-     * Метод генерирует уникальный ключ для заявки.
-     * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
-     * @return Уникальный ключ.
-     */
-    private String generateId() {
-//Реализовать метод генерации.
-        Integer  idInt  = (0 + (int) (Math.random() * 10000)); // Правильно ли?
-
-        System.out.println("Integer  idInt (генерируется и равен =" + idInt);
-
-        String id = idInt.toString();
-
-        System.out.println("тестовый вывод String id =" +id);
-        return id;
-    }
-
-
-
 
     // метод replace -- он же  update в астах
     public boolean replace(String id, Item item){
@@ -85,4 +61,19 @@ public class Tracker {
 
 
 
+
+    /**
+     * Метод генерирует уникальный ключ для заявки.
+     * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
+     * @return Уникальный ключ.
+     */
+    private String generateId() {
+//Реализовать метод генерации.
+        Integer  idInt  = (0 + (int) (Math.random() * 10000)); // Правильно ли?
+
+        System.out.println("idInt генерируется и равен =" + idInt);
+        String id = idInt.toString();
+        System.out.println("тестовый вывод String id =" +id);
+        return id;
+    }
 }

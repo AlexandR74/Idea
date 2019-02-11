@@ -63,6 +63,7 @@ public class StartUI {
 
     private void showMenu() {
         System.out.println("Меню.");
+
 // добавить остальные пункты меню.
     }
 
