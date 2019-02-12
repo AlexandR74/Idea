@@ -9,12 +9,12 @@ public class Item {
     /**
      * инициализируем Id
      */
-    String id;
+    static String id;
 
     /**
      * инициализируем name
      */
-    String name;
+    static String name;
 
     /**
      * инициализируем desc
@@ -40,7 +40,7 @@ public class Item {
         this.desc = desc;
     }
 
-    public String getId() {
+    public static String getId() {
         return id;
     }
 
@@ -48,7 +48,7 @@ public class Item {
         this.id = id;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 

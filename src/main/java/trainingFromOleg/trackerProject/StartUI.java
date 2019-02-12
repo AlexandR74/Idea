@@ -42,9 +42,10 @@ public class StartUI {
             if (ADD.equals(answer)) {
 //добавление заявки вынесено в отдельный метод.
                 this.createItem();
-// } else if (...) {
-// Добавить остальные действия системы по меню.
-            } else if (EXIT.equals(answer)) {
+             } else if (FINDALL.equals(answer)) {
+                this.findAllItem();
+            }
+             else if (EXIT.equals(answer)) {
                 exit = true;
             }
         }
@@ -60,6 +61,59 @@ public class StartUI {
         Item item = new Item(name, desc);
         this.tracker.add(item);
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
+    }
+
+
+    /**
+     * Метод реализует редактирование заявок
+     */
+
+    private void replaceItem() {
+        System.out.println("------------ Редактирование заявки --------------");
+        String id = this.consoleInput.ask("Введите ID для поиска :");
+        String name = this.consoleInput.ask("Введите имя заявки :");
+        String desc = this.consoleInput.ask("Введите описание заявки :");
+        Item item = new Item(name, desc);
+        this.tracker.replace(id,item);
+        System.out.println("------------ Новая заявка с replace : " + item.getId() + "-----------");
+
+    }
+
+
+    /**
+     * Метод реализует удаление заявок
+     */
+
+    private void deleteItem() {
+
+
+    }
+
+
+    /**
+     * Метод реализует получение списка всех заявок
+     */
+
+    private void findAllItem() {
+
+    }
+
+    /**
+     * Метод реализует получение списка по имени
+     */
+
+    private void findByNameItem() {
+
+    }
+
+
+
+    /**
+     * Метод реализует получение заявки по id
+     */
+
+    private void findByIdItem() {
+
     }
 
     private void showMenu() {
