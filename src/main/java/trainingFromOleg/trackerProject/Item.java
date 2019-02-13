@@ -3,33 +3,29 @@ package trainingFromOleg.trackerProject;
 public class Item {
 
     /**
-     * реализуем поля ( с Астах)
-     */
-
-    /**
      * инициализируем Id
      */
-    static String id;
+    public static String id;
 
     /**
      * инициализируем name
      */
-    static String name;
+    public static String name;
 
     /**
      * инициализируем desc
      */
-    String desc;
+    public String desc;
 
     /**
      * инициализируем created
      */
-    long created;
+    public long created;
 
     /**
      * инициализируем comments
      */
-    String[] comments;
+    public String[] comments;
 
 
 
@@ -49,11 +45,11 @@ public class Item {
 
 
 
-    public  String getId() {
+    public static String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public  void setId(String id) {
         this.id = id;
     }
 
