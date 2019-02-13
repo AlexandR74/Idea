@@ -56,8 +56,12 @@ public class Tracker {
     public boolean delete(String id) {
         boolean result = false;
 
+
+
+
         for (int i = 0; i < this.items.length; i++) {
             if (Item.getId().equals(id)) {
+
 
             }
         }
@@ -107,19 +111,15 @@ public class Tracker {
 
 
     //метод findById
-    public  Item findById (String id){    //  Item[] ? или Item (как в задании)
-        boolean unicumID = false;
+    public  Item findById (String id){
 
         for (int i = 0; i < this.items.length; i++) {
 
             if ( this.items[i].getId().equals(id)){
-                unicumID = true;
-                return items[i];
+                return this.items[i];
             }
-
         }
-
-        return item;
+        return null;
     }
 
 
@@ -137,5 +137,7 @@ public class Tracker {
         System.out.println("тестовый вывод String id =" + id);
         return id;
     }
+
+
 
 }
