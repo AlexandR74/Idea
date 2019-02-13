@@ -34,11 +34,20 @@ public class Item {
 
 
 
-
+    // конструктор с 2мя параметрами
     public Item(String name, String desc){
         this.name = name;
         this.desc = desc;
     }
+
+    // конструктор с 3мя параметрами
+    public Item(String name, String desc, String id){
+        this.name = name;
+        this.desc = desc;
+        this.id = id;
+    }
+
+
 
     public static String getId() {
         return id;

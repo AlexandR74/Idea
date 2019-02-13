@@ -1,5 +1,7 @@
 package trainingFromOleg.trackerProject;
 
+//import com.sun.tools.javac.jvm.Items;
+
 public class Tracker {
 
 
@@ -11,7 +13,7 @@ public class Tracker {
     /**
      * Указатель ячейки для новой заявки.
      */
-    private int position = 0; // про это ничего нет  в Астах
+    private int position = 0;
 
 
     //-------------------Методы-----------------------
@@ -27,7 +29,7 @@ public class Tracker {
         return item;
     }
 
-    // метод replace -- он же  update в астах
+    // метод replace
     public boolean replace(String id, Item item) {
         //item.getId().equals(tmp.getId()). сравнивать надо так
         /**
@@ -37,7 +39,16 @@ public class Tracker {
          * Метод должен вернуть boolean результат - удалось ли провести операцию.
          */
 
-        return false;
+        boolean result = false;
+
+        for (int i = 0; i < this.items.length; i++){
+            if (this.items[i].getId().equals(id)){
+
+            }
+        }
+
+
+        return result;
     }
 
 
@@ -57,69 +68,74 @@ public class Tracker {
 
 
 
-    // метод findAll -- оно же getAll в астах
-    // ЧТО ИМЕЛОСЬ ВВИДУ ПО ЗАДАНИЮ? Метод public Item[] findAll() возвращает копию массива this.items без null элементов
+
+    /**
+     * метод findAll -- оно же getAll в астах
+     */
+
     public Item[] findAll() {
+        //инициализируем копию массива
+        Item[] itemsResult = new Item[100];
+
         for (int i = 0; i < this.items.length; i++) {
-            //инициализируем копию массива
-            Item[] resultItems = new Item[100];
 
             if (!(items[i] == null)) {
-                resultItems[resultItems.length] = this.items[i];    // правильно ли?
-
-                System.out.println(items[i]);
+                itemsResult[itemsResult.length] = this.items[i];
             }
-            return resultItems;
         }
+        return itemsResult;
     }
 
-        // метод findByName
 
-        /**
-         * Метод public Item[] findByName(String key)
-         * проверяет в цикле все элементы массива this.items,
-         * сравнивая name (используя метод getName класса Item)
-         * с аргументом метода String key.
-         * Элементы, у которых совпадает name,
-         * копирует в результирующий массив и возвращает его;
-         * @param key
-         * @return items
-         */
-        public Item[] findByName (String key){
+    /**
+     * Метод findByName
+     * @param key
+     * @return itemsResult (новый массив)
+     */
+    public Item[] findByName (String key){
 
-            //инициализируем результирующий массив;
-            Item[] itemsResult = new Item[100];
+        //инициализируем результирующий массив;
+        Item[] itemsResult = new Item[100];
 
-            for (int i = 0; i < this.items.length; i++) {
-                if (Item.getName().equals(key)) {
-                    itemsResult[itemsResult.length] = this.items[i]; // Правильно ли?
-                }
+        for (int i = 0; i < this.items.length; i++) {
+            if (Item.getName().equals(key)) {
+                itemsResult[itemsResult.length] = this.items[i];
+            }
+        }
+        return itemsResult;
+    }
+
+
+    //метод findById
+    public  Item findById (String id){    //  Item[] ? или Item (как в задании)
+        boolean unicumID = false;
+
+        for (int i = 0; i < this.items.length; i++) {
+
+            if ( this.items[i].getId().equals(id)){
+                unicumID = true;
+                return items[i];
             }
 
-            return itemsResult;  //вывод массива надо.
         }
 
-
-        //метод findById
-        public Item findById (String id){
-
-            return items;
-        }
+        return item;
+    }
 
 
-        /**
-         * Метод генерирует уникальный ключ для заявки.
-         * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
-         * @return Уникальный ключ.
-         */
-        private final String generateId(){
+    /**
+     * Метод генерирует уникальный ключ для заявки.
+     * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
+     * @return Уникальный ключ.
+     */
+    private final String generateId(){
 //Реализовать метод генерации.
-            Integer idInt = (0 + (int) (Math.random() * 10000)); // Правильно ли?
+        Integer idInt = (0 + (int) (Math.random() * 10000)); // Правильно ли?
 
-            System.out.println("idInt генерируется и равен =" + idInt);
-            String id = idInt.toString();
-            System.out.println("тестовый вывод String id =" + id);
-            return id;
-        }
-
+        System.out.println("idInt генерируется и равен =" + idInt);
+        String id = idInt.toString();
+        System.out.println("тестовый вывод String id =" + id);
+        return id;
     }
+
+}
