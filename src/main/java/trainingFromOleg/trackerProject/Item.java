@@ -29,7 +29,7 @@ public class Item {
     /**
      * инициализируем comments
      */
-    String [] comments;
+    String[] comments;
 
 
 
@@ -49,7 +49,7 @@ public class Item {
 
 
 
-    public static String getId() {
+    public  String getId() {
         return id;
     }
 
@@ -57,7 +57,7 @@ public class Item {
         this.id = id;
     }
 
-    public static String getName() {
+    public  String getName() {
         return name;
     }
 
