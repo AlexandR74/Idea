@@ -52,7 +52,7 @@ public class Tracker {
 
     // метод replace
     public boolean replace(String id, Item item) {
-        
+
         boolean result = false;
         //перебор элементов
         for (int i = 0; i < this.items.length; i++){
@@ -60,35 +60,27 @@ public class Tracker {
             //сравнение id
             if (this.items[i].getId().equals(id)){
                 item.setId(this.items[i].getId());
-                this.items[i] = item;               //2 дня думал !
-
+                this.items[i] = item;
+                result = true;
             }
         }
-
-
         return result;
     }
 
 
-    // метод delete
+    // метод delete   с помощью arrayCopy().
     public boolean delete(String id) {
         boolean result = false;
-
-
-
-
+        //перебор элементов
         for (int i = 0; i < this.items.length; i++) {
-            if (Item.getId().equals(id)) {
-
-
+            //сравнение id
+            if (this.items[i].getId().equals(id)) {
+                System.arraycopy(items, i+1, items, i, (items.length-i));//ПРОВЕРИТЬ
+                result = true;
             }
         }
         return result;
     }
-
-
-
-
 
 
     /**
@@ -98,9 +90,9 @@ public class Tracker {
     public Item[] findAll() {
         //инициализируем копию массива
         Item[] itemsResult = new Item[100];
-
+        //перебор элементов
         for (int i = 0; i < this.items.length; i++) {
-
+            //сравнение на не null
             if (!(items[i] == null)) {
                 itemsResult[itemsResult.length] = this.items[i];
             }
@@ -120,7 +112,7 @@ public class Tracker {
         Item[] itemsResult = new Item[100];
 
         for (int i = 0; i < this.items.length; i++) {
-            if (Item.getName().equals(key)) {
+            if (this.items[i].getName().equals(key)) {
                 itemsResult[itemsResult.length] = this.items[i];
             }
         }
