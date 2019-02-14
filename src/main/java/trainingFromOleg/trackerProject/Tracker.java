@@ -1,5 +1,6 @@
 package trainingFromOleg.trackerProject;
 
+import java.util.Arrays;
 //import com.sun.tools.javac.jvm.Items;
 
 public class Tracker {
@@ -16,6 +17,26 @@ public class Tracker {
     private int position = 0;
 
 
+    //конструктор position
+
+    private int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    // сеттер присваивает номер позиции последний в массиве items
+    private int setPositionNEXT() {
+
+        return this.position = items.length; //ПРОВЕРИТЬ
+    }
+
+
+
+
+
     //-------------------Методы-----------------------
 
     /**
@@ -25,24 +46,21 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+        this.items[this.setPositionNEXT()] = item;
         return item;
     }
 
     // метод replace
     public boolean replace(String id, Item item) {
-        //item.getId().equals(tmp.getId()). сравнивать надо так
-        /**
-         * . Метод public boolean replace(String id, Item item)
-         * должен заменить ячейку в массиве this.items.
-         * Для этого необходимо найти ячейку в массиве по id.
-         * Метод должен вернуть boolean результат - удалось ли провести операцию.
-         */
-
+        
         boolean result = false;
-
+        //перебор элементов
         for (int i = 0; i < this.items.length; i++){
+
+            //сравнение id
             if (this.items[i].getId().equals(id)){
+                item.setId(this.items[i].getId());
+                this.items[i] = item;               //2 дня думал !
 
             }
         }
