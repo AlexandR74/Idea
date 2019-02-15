@@ -44,50 +44,22 @@ public class StartUI {
             this.showMenu();
             String answer = this.consoleInput.ask("Введите пункт меню : ");
             if (ADD.equals(answer)) {
-                //добавление заявки вынесено в отдельный метод.
                 this.createItem();
 
             } else if (FINDALL.equals(answer)) {
-                //описываем пункт finfall
-                System.out.println("------------ Получение списка всех заявок  --------------");
-                this.tracker.findAll();
-                System.out.println("------------конец списка заявок -----------");
+                this.findAllItem();
 
             } else if (REPLACE.equals(answer)) {
-                //описываем пункт REPLACE
-                System.out.println("------------Замена  заявки --------------");
-                String name = this.consoleInput.ask("Введите новое имя заявки :");
-                String desc = this.consoleInput.ask("Введите новое описание заявки :");
-                Item swapItem = new Item(name, desc);
-                String id = this.consoleInput.ask("Введите ID старой заявки :");
-                String answerReplace = (this.tracker.replace(id, swapItem)) ? "заявка изменена" : "заявка не измеена";
-                this.tracker.replace(id, swapItem);
-                System.out.println(answerReplace);
-                this.tracker.printItem(this.tracker.findById(id));
+                this.replaceItem();
 
             } else if (DELETE.equals(answer)) {
-                //описываем пункт DELETE
-                System.out.println("------------Удаление  заявки --------------");
-                String id = this.consoleInput.ask("Введите ID  заявки :");
-                String answerDelete = (this.tracker.delete(id)) ? "заявка удалена" : "заявка не удалена";
-                this.tracker.delete(id);
-                System.out.println(answerDelete);
-                this.tracker.printItem(this.tracker.findById(id));
+                this.deleteItem();
 
             } else if (FINDBYID.equals(answer)) {
-                //описываем пункт FINDBYID
-                System.out.println("------------Поиск заявки по ID  --------------");
-                String id = this.consoleInput.ask("Введите ID  заявки :");
-                this.tracker.findById(id);
-                if (this.tracker.findById(id)==null) {
-                    System.out.println("Эзаявка не найдена");
-                }
+                this.findByIdItem();
 
             } else if (FINDBYNAME.equals(answer)) {
-                //описываем пункт FINDBYNAE
-                System.out.println("------------Поиск заявки по Name --------------");
-                String name = this.consoleInput.ask("Введите Name:");
-                this.tracker.findByName(name);
+                this.findByNameItem();
 
             } else if (EXIT.equals(answer)) {
                 exit = true;
@@ -114,14 +86,16 @@ public class StartUI {
      */
 
     private void replaceItem() {
-        System.out.println("------------ Редактирование заявки --------------");
-        String id = this.consoleInput.ask("Введите ID для поиска :");
-        String name = this.consoleInput.ask("Введите имя заявки :");
-        String desc = this.consoleInput.ask("Введите описание заявки :");
-        Item item = new Item(name, desc);
-        this.tracker.replace(id,item);
-        System.out.println("------------ Новая заявка с replace : " + item.getId() + "-----------");
 
+        System.out.println("------------Замена  заявки --------------");
+        String name = this.consoleInput.ask("Введите новое имя заявки :");
+        String desc = this.consoleInput.ask("Введите новое описание заявки :");
+        Item swapItem = new Item(name, desc);
+        String id = this.consoleInput.ask("Введите ID старой заявки :");
+        String answerReplace = (this.tracker.replace(id, swapItem)) ? "заявка изменена" : "заявка не измеена";
+        this.tracker.replace(id, swapItem);
+        System.out.println(answerReplace);
+        this.tracker.printItem(this.tracker.findById(id));
     }
 
 
@@ -131,7 +105,12 @@ public class StartUI {
 
     private void deleteItem() {
 
-
+        System.out.println("------------Удаление  заявки --------------");
+        String id = this.consoleInput.ask("Введите ID  заявки :");
+        String answerDelete = (this.tracker.delete(id)) ? "заявка удалена" : "заявка не удалена";
+        this.tracker.delete(id);
+        System.out.println(answerDelete);
+        this.tracker.printItem(this.tracker.findById(id));
     }
 
 
@@ -141,6 +120,9 @@ public class StartUI {
 
     private void findAllItem() {
 
+        System.out.println("------------ Получение списка всех заявок  --------------");
+        this.tracker.findAll();
+        System.out.println("------------конец списка заявок -----------");
     }
 
     /**
@@ -149,8 +131,10 @@ public class StartUI {
 
     private void findByNameItem() {
 
+        System.out.println("------------Поиск заявки по Name --------------");
+        String name = this.consoleInput.ask("Введите Name:");
+        this.tracker.findByName(name);
     }
-
 
 
     /**
@@ -159,6 +143,13 @@ public class StartUI {
 
     private void findByIdItem() {
 
+        System.out.println("------------Поиск заявки по ID  --------------");
+        String id = this.consoleInput.ask("Введите ID  заявки :");
+        this.tracker.findById(id);
+        if (this.tracker.findById(id) == null) {
+            System.out.println("Эзаявка не найдена");
+
+        }
     }
 
     private void showMenu() {
