@@ -76,7 +76,6 @@ public class Tracker {
             if (this.items[i].getId().equals(id)) {
                 System.arraycopy(items, i+1, items, i, (items.length-i));//ПРОВЕРИТЬ
                  result = true;
-
             }
         }
         return result;
@@ -158,7 +157,9 @@ public class Tracker {
      * printItem распечтает item
      */
     public final void printItem( Item item) {
-
+        if (item.getId()==null) {
+            System.out.println("ID заявки не удалось найти ");
+        }
         System.out.println("ID = " + item.getId() +  "Name = " + item.getName() + "Desc = " + item.getDesc());
     }
 }

@@ -14,6 +14,7 @@ public class StartUI {
     private static final String FINDBYID =   "4";
     private static final String FINDBYNAME = "5";
     private static final String EXIT =       "6";
+
     /**
      * Получение данных от пользователя.
      */
@@ -33,6 +34,7 @@ public class StartUI {
         this.tracker = tracker;
     }
 
+
     /**
      * Основой цикл программы.
      */
@@ -42,36 +44,57 @@ public class StartUI {
             this.showMenu();
             String answer = this.consoleInput.ask("Введите пункт меню : ");
             if (ADD.equals(answer)) {
-//добавление заявки вынесено в отдельный метод.
+                //добавление заявки вынесено в отдельный метод.
                 this.createItem();
 
             } else if (FINDALL.equals(answer)) {
-                //описываем метод finfall
+                //описываем пункт finfall
                 System.out.println("------------ Получение списка всех заявок  --------------");
                 this.tracker.findAll();
                 System.out.println("------------конец списка заявок -----------");
 
-            } else if (REPLACE.equals(answer)){
-                //описываем метод REPLACE
+            } else if (REPLACE.equals(answer)) {
+                //описываем пункт REPLACE
                 System.out.println("------------Замена  заявки --------------");
                 String name = this.consoleInput.ask("Введите новое имя заявки :");
                 String desc = this.consoleInput.ask("Введите новое описание заявки :");
                 Item swapItem = new Item(name, desc);
                 String id = this.consoleInput.ask("Введите ID старой заявки :");
-                String answerReplace = (this.tracker.replace(id,swapItem)) ? "заявка измеена":"заявка не измеена";
+                String answerReplace = (this.tracker.replace(id, swapItem)) ? "заявка изменена" : "заявка не измеена";
+                this.tracker.replace(id, swapItem);
                 System.out.println(answerReplace);
                 this.tracker.printItem(this.tracker.findById(id));
 
-                
+            } else if (DELETE.equals(answer)) {
+                //описываем пункт DELETE
+                System.out.println("------------Удаление  заявки --------------");
+                String id = this.consoleInput.ask("Введите ID  заявки :");
+                String answerDelete = (this.tracker.delete(id)) ? "заявка удалена" : "заявка не удалена";
+                this.tracker.delete(id);
+                System.out.println(answerDelete);
+                this.tracker.printItem(this.tracker.findById(id));
 
-//
-// Добавить остальные действия системы по меню.
+            } else if (FINDBYID.equals(answer)) {
+                //описываем пункт FINDBYID
+                System.out.println("------------Поиск заявки по ID  --------------");
+                String id = this.consoleInput.ask("Введите ID  заявки :");
+                this.tracker.findById(id);
+                if (this.tracker.findById(id)==null) {
+                    System.out.println("Эзаявка не найдена");
+                }
+
+            } else if (FINDBYNAME.equals(answer)) {
+                //описываем пункт FINDBYNAE
+                System.out.println("------------Поиск заявки по Name --------------");
+                String name = this.consoleInput.ask("Введите Name:");
+                this.tracker.findByName(name);
+
             } else if (EXIT.equals(answer)) {
                 exit = true;
-                }
             }
         }
     }
+
 
     /**
      * Метод реализует добавленяи новый заявки в хранилище.
