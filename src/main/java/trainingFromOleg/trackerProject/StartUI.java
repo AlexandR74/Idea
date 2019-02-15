@@ -44,11 +44,31 @@ public class StartUI {
             if (ADD.equals(answer)) {
 //добавление заявки вынесено в отдельный метод.
                 this.createItem();
-             } else if (FINDALL.equals(answer)) {
-                this.findAllItem();
-            }
-             else if (EXIT.equals(answer)) {
+
+            } else if (FINDALL.equals(answer)) {
+                //описываем метод finfall
+                System.out.println("------------ Получение списка всех заявок  --------------");
+                this.tracker.findAll();
+                System.out.println("------------конец списка заявок -----------");
+
+            } else if (REPLACE.equals(answer)){
+                //описываем метод REPLACE
+                System.out.println("------------Замена  заявки --------------");
+                String name = this.consoleInput.ask("Введите новое имя заявки :");
+                String desc = this.consoleInput.ask("Введите новое описание заявки :");
+                Item swapItem = new Item(name, desc);
+                String id = this.consoleInput.ask("Введите ID старой заявки :");
+                String answerReplace = (this.tracker.replace(id,swapItem)) ? "заявка измеена":"заявка не измеена";
+                System.out.println(answerReplace);
+                this.tracker.printItem(this.tracker.findById(id));
+
+                
+
+//
+// Добавить остальные действия системы по меню.
+            } else if (EXIT.equals(answer)) {
                 exit = true;
+                }
             }
         }
     }

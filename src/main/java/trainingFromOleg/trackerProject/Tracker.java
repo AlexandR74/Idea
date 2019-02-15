@@ -41,7 +41,6 @@ public class Tracker {
 
     /**
      * Метод реализаущий добавление заявки в хранилище (add)
-     *
      * @param item новая заявка
      */
     public Item add(Item item) {
@@ -76,7 +75,8 @@ public class Tracker {
             //сравнение id
             if (this.items[i].getId().equals(id)) {
                 System.arraycopy(items, i+1, items, i, (items.length-i));//ПРОВЕРИТЬ
-                result = true;
+                 result = true;
+
             }
         }
         return result;
@@ -90,6 +90,7 @@ public class Tracker {
     public Item[] findAll() {
         //инициализируем копию массива
         Item[] itemsResult = new Item[100];
+
         //перебор элементов
         for (int i = 0; i < this.items.length; i++) {
             //сравнение на не null
@@ -123,10 +124,15 @@ public class Tracker {
     //метод findById
     public  Item findById (String id){
 
+        //  для itemresult мы создали конструктор без параметров
+        Item itemresult = new Item();
+
         for (int i = 0; i < this.items.length; i++) {
 
             if ( this.items[i].getId().equals(id)){
-                return this.items[i];
+
+                itemresult=this.items[i];
+                return itemresult;
             }
         }
         return null;
@@ -148,6 +154,11 @@ public class Tracker {
         return id;
     }
 
+    /**
+     * printItem распечтает item
+     */
+    public final void printItem( Item item) {
 
-
+        System.out.println("ID = " + item.getId() +  "Name = " + item.getName() + "Desc = " + item.getDesc());
+    }
 }

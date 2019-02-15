@@ -29,6 +29,10 @@ public class Item {
 
 
 
+    // конструктор без парметров
+    public Item (){
+    }
+
 
     // конструктор с 2мя параметрами
     public Item(String name, String desc){
