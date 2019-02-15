@@ -1,21 +1,21 @@
-package trainingFromOleg.trackerProject;
-
-import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
-
-public class TrackerTest {
-
-
-    @Test
-    public void whenAddNewItemThenTrackerHasSameItem() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("test1","testDescription","123");
-        tracker.add(item);
-        assertThat(tracker.findById("123"), is(item));
-    }
-
+//package trainingFromOleg.trackerProject;
+//
+//import org.junit.Test;
+//
+//import static org.hamcrest.CoreMatchers.is;
+//import static org.junit.Assert.*;
+//
+//public class TrackerTest {
+//
+//
+//    @Test
+//    public void whenAddNewItemThenTrackerHasSameItem() {
+//        Tracker tracker = new Tracker();
+//        Item item = new Item("test1","testDescription","123");
+//        tracker.add(item);
+//        assertThat(tracker.findById("123"), is(item));
+//    }
+//
 //    @Test
 //    public void whenReplaceNameThenReturnNewName() {
 //        Tracker tracker = new Tracker();
@@ -31,5 +31,5 @@ public class TrackerTest {
 //// Проверяем, что заявка с таким id имеет новые имя test2.
 //        assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
 //    }
-
-}
+//
+//}
