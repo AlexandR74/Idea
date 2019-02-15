@@ -29,12 +29,11 @@ public class Tracker {
 
     // сеттер присваивает номер позиции последний в массиве items
     private int setPositionNEXT() {
-
-        return this.position = items.length; //ПРОВЕРИТЬ
+        if ((this.items.length)==0){
+            return this.position = 1;
+        }
+        return this.position ++ ; //ПРОВЕРИТЬ
     }
-
-
-
 
 
     //-------------------Методы-----------------------

@@ -10,22 +10,21 @@ public class ConsoleInput {
 
         String uncnownError = "неизвестная ошибка";
 
-        if (question == "Введите пункт меню :  ") {
+        if (in.hasNextInt()) {
+            int mInt = Integer.valueOf(in.nextInt());
+            if (mInt > -1 && mInt < 7) {
 
-            if (in.hasNextInt()) {
-                int mInt = Integer.valueOf(in.nextInt());
-                if (mInt > -1 && mInt < 7) {
-
-                    return Integer.toString(mInt);
-                }
-                System.out.println("Некорректный ввод пункта меню ");
+                return Integer.toString(mInt);
             }
+            System.out.println("Некорректный ввод пункта меню ");
+        }
 
-            if (question != "Введите пункт меню :  ") {
-                String mString = String.valueOf(in.nextInt());
-                return mString;
-            }
+        if (question != "Введите пункт меню :  ") {
+            String mString = String.valueOf(in);
+            return mString;
         }
         return uncnownError;
     }
+
 }
+
