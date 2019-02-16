@@ -1,6 +1,5 @@
 package trainingFromOleg.trackerProject;
 
-import java.util.Arrays;
 //import com.sun.tools.javac.jvm.Items;
 
 public class Tracker {
@@ -92,7 +91,21 @@ public class Tracker {
         //перебор элементов
         for (int i = 0; i < this.items.length; i++) {
             //сравнение на не null
-            if (!(items[i] == null)) {
+
+            /*
+            * Читай что значят исключения которые тебе выбрасывают
+            * В данном случае у тебя выход за границы массива
+            * НО и в целом метод написан не совсем верно
+            * Массив new Item[100] имеет длинну 100
+            * т.е. itemsResult.length вернет тебе 100
+            * но обращание в элементам массива начинает с элемента с индексом 0
+            * таким образом у тебя в itemsResult есть элементы с 0 до 99
+            * а ты пытаешься засунуть в элемент с индексом 100, которого нет
+            * но основная проблема в другом, ты не вернешь все найденные элементы, так как ты написал
+            * потому что любой найденные != null элемент ты будешь ставить в конец itemResult
+            * и он будет перезаписывать предыдущий т.е. в итоге ты вернешь один элемент
+            * */
+            if (items[i] != null) {
                 itemsResult[itemsResult.length] = this.items[i];
             }
         }
@@ -110,6 +123,9 @@ public class Tracker {
         //инициализируем результирующий массив;
         Item[] itemsResult = new Item[100];
 
+        /*
+         * Аналогичная ошибка как и в методе findAll()
+         */
         for (int i = 0; i < this.items.length; i++) {
             if (this.items[i].getName().equals(key)) {
                 itemsResult[itemsResult.length] = this.items[i];
@@ -123,11 +139,12 @@ public class Tracker {
     public  Item findById (String id){
 
         //  для itemresult мы создали конструктор без параметров
-        Item itemresult = new Item();
+        Item itemresult;
+        //= new Item(); это тебе здесь не надо ты просто создаешь ссылочную переменную, которой потом по результатам поиска присвоишь значение
 
         for (int i = 0; i < this.items.length; i++) {
 
-            if ( this.items[i].getId().equals(id)){
+            if ( items[i].getId().equals(id)){
 
                 itemresult=this.items[i];
                 return itemresult;
