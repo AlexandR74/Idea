@@ -73,11 +73,12 @@ public class StartUI {
      */
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
-        String name = this.consoleInput.ask("Введите имя заявки :");
+        String name = ( this.consoleInput.ask("Введите имя заявки :"));
         String desc = this.consoleInput.ask("Введите описание заявки :");
         Item item = new Item(name, desc);
         this.tracker.add(item);
-        this.tracker.position++;
+
+
        // this.tracker.printItem(this.tracker.findAll());
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
@@ -124,7 +125,7 @@ public class StartUI {
 
         System.out.println("------------ Получение списка всех заявок  --------------");
         this.tracker.findAll();
-        //this.tracker.printItem(this.tracker.findAll());
+        this.tracker.printItem(this.tracker.findAll());
         System.out.println("------------конец списка заявок -----------");
     }
 

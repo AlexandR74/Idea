@@ -2,6 +2,8 @@ package trainingFromOleg.trackerProject;
 
 public class Item {
 
+    // позиция
+    public static boolean marker;
     /**
      * инициализируем Id
      */
@@ -10,12 +12,12 @@ public class Item {
     /**
      * инициализируем name
      */
-    public static String name;
+    private static String name;
 
     /**
      * инициализируем desc
      */
-    public String desc;
+    private static String desc;
 
     /**
      * инициализируем created
@@ -47,28 +49,24 @@ public class Item {
         this.id = id;
     }
 
+    public static boolean getMarker() { return marker;  }
+    public void setMarker(boolean marker) { this.marker = marker; }
 
-
-    public static String getId() {
-        return id;
+    public  String getId() {
+        return this.id;
     }
-
     public  void setId(String id) {
         this.id = id;
     }
 
-    public static String getName() {
-        return name;
+    public  String getName() {
+        return this.name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name;}
 
     public String getDesc() {
-        return desc;
+        return this.desc;
     }
-
     public void setDesc(String desc) {
         this.desc = desc;
     }
@@ -76,7 +74,6 @@ public class Item {
     public long getCreated() {
         return created;
     }
-
     public void setCreated(long created) {
         this.created = created;
     }
@@ -84,8 +81,9 @@ public class Item {
     public String[] getComments() {
         return comments;
     }
-
     public void setComments(String[] comments) {
         this.comments = comments;
     }
+
+
 }
