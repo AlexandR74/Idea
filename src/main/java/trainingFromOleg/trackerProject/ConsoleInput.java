@@ -1,6 +1,6 @@
 package trainingFromOleg.trackerProject;
 import java.util.Scanner;
-
+import java.io.*;
 public class ConsoleInput {
 
 
@@ -8,22 +8,10 @@ public class ConsoleInput {
         System.out.println(question);
         Scanner in = new Scanner(System.in);
 
-        String uncnownError = "неизвестная ошибка";
+        String key = in.nextLine();
 
-        if (in.hasNextInt()) {
-            int mInt = Integer.valueOf(in.nextInt());
-            if (mInt > -1 && mInt < 7) {
 
-                return Integer.toString(mInt);
-            }
-            System.out.println("Некорректный ввод пункта меню ");
-        }
-
-        if (question != "Введите пункт меню :  ") {
-            String mString = String.valueOf(in);
-            return mString;
-        }
-        return uncnownError;
+        return key;
     }
 
 }

@@ -8,46 +8,32 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
+    int position = 0;  // номер позиции в памяти
     private final Item[] items = new Item[100];
-
-    /**
-     * Указатель ячейки для новой заявки.
-     */
-    private int position = 0;
+    private final Item[] swapItems = new Item[100];
 
 
-    //конструктор position
 
-    private int getPosition() {
-        return position;
-    }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
 
-    // сеттер присваивает номер позиции последний в массиве items
-    private int setPositionNEXT() {
-        if ((this.items.length)==0){
-            return this.position = 1;
-        }
-        return this.position ++ ; //ПРОВЕРИТЬ
-    }
 
 
     //-------------------Методы-----------------------
 
-    /**
-     * Метод реализаущий добавление заявки в хранилище (add)
-     * @param item новая заявка
-     */
+    //Метод ADD
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.setPositionNEXT()] = item;
+        this.items[this.position] = item;
+        System.out.println("Тестовый вывод заявки  item из метода ADD в классе Tracker: ");
+        System.out.println("ID = " + item.getId() +  " Name = " +  item.getName() + " Desc = " + item.getDesc());
+        System.out.println(" Тестовый вывод заявки из items[this.position] = ");
+        System.out.println( "ID = "+ this.items[this.position].getId() +"Name =" + this.items[this.position].getName() + "Desc =" + this.items[this.position].getDesc());
         return item;
+
+
     }
 
-    // метод replace
+    // метод Replace
     public boolean replace(String id, Item item) {
 
         boolean result = false;
@@ -73,44 +59,47 @@ public class Tracker {
             //сравнение id
             if (this.items[i].getId().equals(id)) {
                 System.arraycopy(items, i+1, items, i, (items.length-i));//ПРОВЕРИТЬ
-                 result = true;
+                result = true;
             }
         }
         return result;
     }
 
 
-    /**
-     * метод findAll -- оно же getAll в астах
-     */
-
+    //Метод Findall
     public Item[] findAll() {
-        //инициализируем копию массива
-        Item[] itemsResult = new Item[100];
-
-        //перебор элементов
-        for (int i = 0; i < this.items.length; i++) {
-            //сравнение на не null
-
-            /*
-            * Читай что значят исключения которые тебе выбрасывают
-            * В данном случае у тебя выход за границы массива
-            * НО и в целом метод написан не совсем верно
-            * Массив new Item[100] имеет длинну 100
-            * т.е. itemsResult.length вернет тебе 100
-            * но обращание в элементам массива начинает с элемента с индексом 0
-            * таким образом у тебя в itemsResult есть элементы с 0 до 99
-            * а ты пытаешься засунуть в элемент с индексом 100, которого нет
-            * но основная проблема в другом, ты не вернешь все найденные элементы, так как ты написал
-            * потому что любой найденные != null элемент ты будешь ставить в конец itemResult
-            * и он будет перезаписывать предыдущий т.е. в итоге ты вернешь один элемент
-            * */
-            if (items[i] != null) {
-                itemsResult[itemsResult.length] = this.items[i];
-            }
+        int j = 0;
+        //форматирование временного массива перед использованием
+        for (int i = 0; i <= 99; i++){
+            System.out.println("this.swapItems[i]=null" + this.swapItems[i] );
+            this.swapItems[i]=null;
         }
-        return itemsResult;
+       //перебор и заполнение элементов
+
+        System.out.println("перебор и заполнение элементов");
+        for (int i = 0; i <= 99; i++) {
+            System.out.println( "мы в цикле for  и i = " +i);
+
+
+            if ((this.items[i] != null) && (this.items[i].getId()!=null)) {
+                System.out.println( "(this.items[i] != null)? = " + (this.items[i] != null) +"&&" +"(this.items[i].getId() ?=" + (this.items[i].getId()));
+
+
+
+                    Item swapItem = new Item(items[i].getName(), items[i].getDesc());
+                    System.out.println("Item swapItem = new Item(items[i].getName(), items[i].getDesc());" + swapItem.getName()+ " " + swapItem.getDesc());
+
+
+                 swapItem.setId(items[i].getId());
+                    System.out.println("swapItem.setId(items[i].getId())" + swapItem.getId());
+
+                this.swapItems[j] = swapItem; // j-я потому как новый надо и переписанный. без дыр
+                 j++;
+                }
+            }
+        return swapItems;
     }
+
 
 
     /**
@@ -126,7 +115,7 @@ public class Tracker {
         /*
          * Аналогичная ошибка как и в методе findAll()
          */
-        for (int i = 0; i < this.items.length; i++) {
+        for (int i = 0; i <= this.items.length; i++) {
             if (this.items[i].getName().equals(key)) {
                 itemsResult[itemsResult.length] = this.items[i];
             }
@@ -142,7 +131,7 @@ public class Tracker {
         Item itemresult;
         //= new Item(); это тебе здесь не надо ты просто создаешь ссылочную переменную, которой потом по результатам поиска присвоишь значение
 
-        for (int i = 0; i < this.items.length; i++) {
+        for (int i = 0; i <= this.items.length; i++) {
 
             if ( items[i].getId().equals(id)){
 
@@ -172,10 +161,9 @@ public class Tracker {
     /**
      * printItem распечтает item
      */
-    public final void printItem( Item item) {
-        if (item.getId()==null) {
-            System.out.println("ID заявки не удалось найти ");
-        }
-        System.out.println("ID = " + item.getId() +  "Name = " + item.getName() + "Desc = " + item.getDesc());
+    public final void printItem(Item[] Items) {
+
+        for (int i = 0 ; this.swapItems[i]!=null ; i++)
+                System.out.println("ID = " + this.swapItems[i].getId() +  " Name = " + this.swapItems[i].getName() + " Desc = " +this.swapItems[i].getDesc());
     }
 }

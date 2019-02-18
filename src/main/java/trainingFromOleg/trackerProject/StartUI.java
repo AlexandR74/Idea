@@ -77,6 +77,8 @@ public class StartUI {
         String desc = this.consoleInput.ask("Введите описание заявки :");
         Item item = new Item(name, desc);
         this.tracker.add(item);
+        this.tracker.position++;
+       // this.tracker.printItem(this.tracker.findAll());
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
 
@@ -95,7 +97,7 @@ public class StartUI {
         String answerReplace = (this.tracker.replace(id, swapItem)) ? "заявка изменена" : "заявка не измеена";
         this.tracker.replace(id, swapItem);
         System.out.println(answerReplace);
-        this.tracker.printItem(this.tracker.findById(id));
+        //this.tracker.printItem(this.tracker.findById(id));
     }
 
 
@@ -110,7 +112,7 @@ public class StartUI {
         String answerDelete = (this.tracker.delete(id)) ? "заявка удалена" : "заявка не удалена";
         this.tracker.delete(id);
         System.out.println(answerDelete);
-        this.tracker.printItem(this.tracker.findById(id));
+        //this.tracker.printItem(this.tracker.findById(id));
     }
 
 
@@ -122,6 +124,7 @@ public class StartUI {
 
         System.out.println("------------ Получение списка всех заявок  --------------");
         this.tracker.findAll();
+        //this.tracker.printItem(this.tracker.findAll());
         System.out.println("------------конец списка заявок -----------");
     }
 
