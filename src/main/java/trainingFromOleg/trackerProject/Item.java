@@ -104,8 +104,7 @@ public class Item {
          int count = getPosition();
          count ++;
          setPosition(count);
+        System.out.println("Теперь позиция равна " + getPosition() );
     }
-
-
 
 }

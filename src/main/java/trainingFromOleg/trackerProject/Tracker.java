@@ -9,151 +9,60 @@ public class Tracker {
      * Массив для хранение заявок.
      */
 
-    private final Item[] items = new Item[5];
-    private final Item[] swapItems = new Item[5];
+    public static final Item[] items = new Item[5];
+    public static final Item[] swapItems = new Item[5];
 
     //-------------------Методы-----------------------
 
     //Метод ADD
     public Item add(Item item) {
+        System.out.println("Мы в методе ADD");
+        // Прилепить позицию к номеру new массива()
+        // проверить список
+        System.out.println("выполняем команду: item.getPosition() ,  = " + item.getPosition());
+        int number = item.getPosition();
+        System.out.println("int number = item.getPosition(); = " + number);
+        Item.changePosition();
+        this.items[number] = item;
 
-        Прилепить позицию к номеру new массива()
-        проверить список
-            System.out.println("Тестовый Вывод всех заявок");
-            for (int i = 0; i <= 4; i++) {
-                if (this.items[i].getMarker()) {
-                    System.out.print(this.items[i].getId());
-                    System.out.print(this.items[i].getName());
-                    System.out.print(this.items[i].getDesc());
-                }
-            }
-            return item;
-        }
-
-
-    // метод Replace
-    public boolean replace(String id, Item item) {
-
-        boolean result = false;
-        //перебор элементов
-        for (int i = 0; i < this.items.length; i++){
-
-            //сравнение id
-            if (this.items[i].getId().equals(id)){
-                item.setId(this.items[i].getId());
-                this.items[i] = item;
-                result = true;
-            }
-        }
-        return result;
-    }
+        System.out.println("Состояние переменных");
+        System.out.println("position = " + Item.getPosition()+";" + "Name = " + Item.getName()+";"+"Desc = "+ Item.getDesc()+";"+
+                "ID =" + Item.getId()+";");
+        System.out.println("обнуление!!! (окромя позиции)");
+        Item.setDesc("");
+        Item.setName("");
+        Item.setId("");
+        System.out.println("position = " + Item.getPosition()+";" + "Name = " + Item.getName()+";"+"Desc = "+ Item.getDesc()+";"+
+                "ID =" + Item.getId()+";");
 
 
-    // метод delete   с помощью arrayCopy().
-    public boolean delete(String id) {
-        boolean result = false;
-        //перебор элементов
-        for (int i = 0; i < this.items.length; i++) {
-            //сравнение id
-            if (this.items[i].getId().equals(id)) {
-                System.arraycopy(items, i+1, items, i, (items.length-i));//ПРОВЕРИТЬ
-                result = true;
-            }
-        }
-        return result;
+        return item;
     }
 
 
     //Метод Findall
     public Item[] findAll() {
-        int j = 0;
-        //форматирование временного массива перед использованием
-        for (int i = 0; i <= 4; i++){
-             this.swapItems[i]=null;
-        }
+        System.out.println("Метод findAll");
+        int j =0;
+
+
        //перебор и заполнение элементов
-
-
-//        System.out.println("ИЗНАЧАЛЬНЫЙ МАССИВ ЗАЯВОК ВЫГЛЯДИТ ТАК");
-//        for (int i = 0 ; i<=2; i++){
-//            System.out.print(items[i].getId());
-//            System.out.print(items[i].getName());
-//            System.out.print(items[i].getDesc());
-//        }
-
-
-
-
 
         System.out.println("перебор и заполнение элементов");
         for (int i = 0; i <= 4; i++) {
-            System.out.println( "мы в цикле for  и i = " +i);
+            if (this.items[i].getId()!=null){
+                 this.swapItems[j].setId(this.items[i].getId());
+                this.swapItems[j].setName(this.items[i].getName());
+                this.swapItems[j].setDesc(this.items[i].getDesc());
 
-
-            if ((this.items[i] != null) && (this.items[i].getId()!=null)) {
-                System.out.println( "(this.items[i]  !NULL =  "  + (this.items[i] != null) + " && " +"Id() =  " + (this.items[i].getId()));
-
-
-
-                    Item swapItem = new Item(items[i].getName(), items[i].getDesc());
-                    System.out.println("Item swapItem = new Item(" +swapItem.getName() +" ," + swapItem.getDesc()+ " );");
-
-
-                 swapItem.setId(items[i].getId());
-                    System.out.println("swapItem.setId("+swapItem.getId()+" )" );
-
-                this.swapItems[j] = swapItem; // j-я потому как новый надо и переписанный. без дыр
-
-                 j++;
-                }
+                System.out.println(   "name = " +this.swapItems[j].getName()+";"+ ""+
+                                    "desc = " +this.swapItems[j].getDesc()+";"+ ""+
+                                     "id = " +this.swapItems[j].getId()+";"+ "");
+                j++;
             }
+        }
         return swapItems;
     }
-
-
-
-    /**
-     * Метод findByName
-     * @param key
-     * @return itemsResult (новый массив)
-     */
-    public Item[] findByName (String key){
-
-        //инициализируем результирующий массив;
-        Item[] itemsResult = new Item[5];
-
-        /*
-         * Аналогичная ошибка как и в методе findAll()
-         */
-        for (int i = 0; i <= this.items.length; i++) {
-            if (this.items[i].getName().equals(key)) {
-                itemsResult[itemsResult.length] = this.items[i];
-            }
-        }
-        return itemsResult;
-    }
-
-
-    //метод findById
-    public  Item findById (String id){
-
-        //  для itemresult мы создали конструктор без параметров
-        Item itemresult;
-        //= new Item(); это тебе здесь не надо ты просто создаешь ссылочную переменную, которой потом по результатам поиска присвоишь значение
-
-        for (int i = 0; i <= this.items.length; i++) {
-
-            if ( this.items[i].getId().equals(id)){
-
-                itemresult=this.items[i];
-                return itemresult;
-            }
-        }
-        return null;
-    }
-
-
-
 
 
 
@@ -161,9 +70,10 @@ public class Tracker {
     /**
      * printItem распечтает item
      */
-    public final void printItem(Item[] Items) {
+    public final void printSwapItems() {
 
         for (int i = 0 ; this.swapItems[i]!=null ; i++)
-                System.out.println("ID = " + this.swapItems[i].getId() +  " Name = " + this.swapItems[i].getName() + " Desc = " +this.swapItems[i].getDesc());
+                System.out.println("ID = " + this.swapItems[i].getId()+"; " +  " Name = " + this.swapItems[i].getName()+"; " + " Desc = "
+                        +this.swapItems[i].getDesc()+"; "+"position = "+ this.swapItems[i].getPosition()+"; ");
     }
 }
