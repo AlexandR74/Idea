@@ -23,7 +23,7 @@ public class Tracker {
         int number = item.getPosition();
         System.out.println("int number = item.getPosition(); = " + number);
         Item.changePosition();
-        this.items[number] = item; // <<<<<<<<<<<<  свертка
+        this.items[number] = item; // <<<<<<<<<<<<  КАКОЙ ИМЕННО ITEM ТАМ ?
 
         System.out.println("Состояние переменных");
         System.out.println("position = " + Item.getPosition()+";" + "Name = " + Item.getName()+";"+"Desc = "+ Item.getDesc()+";"+
@@ -36,7 +36,7 @@ public class Tracker {
                 "ID =" + Item.getId()+";");
 
 
-        return item;   // <<<<<<<<<<<<<<<<<ПОЧЕМУ ITEM
+        return item;   // <<<<<<<<<<<<<<<<<ПОЧЕМУ ITEM ВЕДЬ МЫ ИЗГОТОВИЛИ ITEMS?
     }
 
 

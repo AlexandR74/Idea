@@ -76,8 +76,8 @@ public class StartUI {
 
         Item.setName( this.consoleInput.ask("Введите имя заявки :"));
         Item.setDesc(this.consoleInput.ask("Введите описание заявки :"));
-        final Item item2 = new Item(Item.getPosition() , Item.getName(), Item.getDesc(), Item.generateId());
-        this.tracker.add(item2);
+        final Item item = new Item(Item.getPosition() , Item.getName(), Item.getDesc(), Item.generateId());
+        this.tracker.add(item);
     }
 
     /**
