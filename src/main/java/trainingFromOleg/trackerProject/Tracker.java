@@ -12,7 +12,7 @@ public class Tracker {
     public static final Item[] items = new Item[5];
     public static final Item[] swapItems = new Item[5];
 
-    //-------------------Методы-----------------------
+    //-------------------Методы------------------------
 
     //Метод ADD
     public Item add(Item item) {
