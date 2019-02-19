@@ -34,6 +34,8 @@ public class Tracker {
         Item.setId("");
         System.out.println("position = " + Item.getPosition()+";" + "Name = " + Item.getName()+";"+"Desc = "+ Item.getDesc()+";"+
                 "ID =" + Item.getId()+";");
+        System.out.println("positionITEMS[] = " + this.items[number].getPosition()+";" + "NameITEMS[] = " + this.items[number].getName()+";"+"DescITEMS[] = "+ this.items[number].getDesc()+";"+
+                "IDItems[] =" + this.items[number].getId()+";");
 
 
         return item;   // <<<<<<<<<<<<<<<<<ПОЧЕМУ ITEM ВЕДЬ МЫ ИЗГОТОВИЛИ ITEMS?
