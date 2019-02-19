@@ -17,13 +17,8 @@ public class Tracker {
     //Метод ADD
     public Item add(Item item) {
 
-        for (int i =0 ; i<=4 ; i++){
-            if (!this.items[i].getMarker()){
-                item.setId(this.generateId());
-                this.items[i]=item;
-                this.items[i].setMarker(true);
-            }
-        }
+        Прилепить позицию к номеру new массива()
+        проверить список
             System.out.println("Тестовый Вывод всех заявок");
             for (int i = 0; i <= 4; i++) {
                 if (this.items[i].getMarker()) {
@@ -159,17 +154,7 @@ public class Tracker {
 
 
 
-    /**
-     * Метод генерирует уникальный ключ для заявки.
-     * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
-     * @return Уникальный ключ.
-     */
-    private final String generateId(){
 
-        Integer idInt = (0 + (int) (Math.random() * 10000));
-        String id = idInt.toString();
-        return id;
-    }
 
 
 

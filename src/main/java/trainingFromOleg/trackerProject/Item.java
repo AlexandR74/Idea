@@ -3,11 +3,11 @@ package trainingFromOleg.trackerProject;
 public class Item {
 
     // позиция
-    public static boolean marker;
+    private static int position=0;
     /**
      * инициализируем Id
      */
-    public static String id;
+    private static String id;
 
     /**
      * инициализируем name
@@ -22,12 +22,12 @@ public class Item {
     /**
      * инициализируем created
      */
-    public long created;
+    private long created;
 
     /**
      * инициализируем comments
      */
-    public String[] comments;
+    private String[] comments;
 
 
 
@@ -43,47 +43,69 @@ public class Item {
     }
 
     // конструктор с 3мя параметрами
-    public Item(String name, String desc, String id){
+    public Item(int position, String name, String desc, String id){
+        this.position = position;
         this.name = name;
         this.desc = desc;
         this.id = id;
     }
 
-    public static boolean getMarker() { return marker;  }
-    public void setMarker(boolean marker) { this.marker = marker; }
+    public static int getPosition() { return position;  }
+    public static void setPosition(int newPosition) { position = newPosition; }
 
-    public  String getId() {
-        return this.id;
+    public  static String getId() {
+        return id;
     }
-    public  void setId(String id) {
-        this.id = id;
+    public  static void setId(String newId) {
+        id = newId;
     }
 
-    public  String getName() {
-        return this.name;
+    public  static String getName() {
+        return name;
     }
-    public void setName(String name) { this.name = name;}
+    public  static void setName(String newName) { name = newName;}
 
-    public String getDesc() {
-        return this.desc;
+    public static String getDesc() {
+        return desc;
     }
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public static void setDesc(String newDesc) {
+        desc = newDesc;
     }
 
     public long getCreated() {
-        return created;
+        return this.created;
     }
     public void setCreated(long created) {
         this.created = created;
     }
 
     public String[] getComments() {
-        return comments;
+        return this.comments;
     }
     public void setComments(String[] comments) {
         this.comments = comments;
     }
+
+
+
+    /**
+     * Метод генерирует уникальный ключ для заявки.
+     * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
+     * @return Уникальный ключ.
+     */
+     public static String generateId(){
+
+        Integer idInt = (0 + (int) (Math.random() * 10000));
+        String id = idInt.toString();
+        return id;
+    }
+
+    public static void changePosition(){
+         int count = getPosition();
+         count ++;
+         setPosition(count);
+    }
+
 
 
 }

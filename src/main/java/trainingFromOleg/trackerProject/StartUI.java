@@ -73,9 +73,13 @@ public class StartUI {
      */
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
-        String name = ( this.consoleInput.ask("Введите имя заявки :"));
-        String desc = this.consoleInput.ask("Введите описание заявки :");
-        Item item = new Item(name, desc);
+
+        Item.setName( this.consoleInput.ask("Введите имя заявки :"));
+        Item.setDesc(this.consoleInput.ask("Введите описание заявки :"));
+
+        Item item = new Item(Item.getPosition() , Item.getName(), Item.getDesc(), Item.generateId());
+        Item.changePosition();
+
         this.tracker.add(item);
 
 
