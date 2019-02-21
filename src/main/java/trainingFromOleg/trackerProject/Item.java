@@ -2,22 +2,26 @@ package trainingFromOleg.trackerProject;
 
 public class Item {
 
-    // позиция
-    private static int position=0;
+
     /**
      * инициализируем Id
      */
-    private static String id;
+
+    private int position;
+    /*
+    * Еще раз перечитай внимтально как работают статики и помймешь ниже был полный бред
+    * */
+    private String id;
 
     /**
      * инициализируем name
      */
-    private static String name;
+    private  String name;
 
     /**
      * инициализируем desc
      */
-    private static String desc;
+    private  String desc;
 
     /**
      * инициализируем created
@@ -42,33 +46,35 @@ public class Item {
         this.desc = desc;
     }
 
-    // конструктор с 3мя параметрами
-    public Item(int position, String name, String desc, String id){
-        this.position = position;
+    // конструктор с 3мя параметрами Вот это вообще был "высший пилотаж":) (когда  у тебя конструктор с 4мя параметрами но ты говоришь что три)
+    public Item(String name, String desc, String id){
         this.name = name;
         this.desc = desc;
         this.id = id;
     }
 
-    public static int getPosition() { return position;  }
-    public static void setPosition(int newPosition) { position = newPosition; }
+    /**
+     * Зачем статики?! Никода сеттеры не делаются статиками
+     */
+    public  int getPosition() { return position;  }
+    public  void setPosition(int newPosition) { position = newPosition; }
 
-    public  static String getId() {
+    public   String getId() {
         return id;
     }
-    public  static void setId(String newId) {
+    public   void setId(String newId) {
         id = newId;
     }
 
-    public  static String getName() {
+    public   String getName() {
         return name;
     }
-    public  static void setName(String newName) { name = newName;}
+    public   void setName(String newName) { name = newName;}
 
-    public static String getDesc() {
+    public  String getDesc() {
         return desc;
     }
-    public static void setDesc(String newDesc) {
+    public  void setDesc(String newDesc) {
         desc = newDesc;
     }
 
@@ -100,11 +106,14 @@ public class Item {
         return id;
     }
 
-    public static void changePosition(){
-         int count = getPosition();
-         count ++;
-         setPosition(count);
-        System.out.println("Теперь позиция равна " + getPosition() );
-    }
+    /**
+     * Это не надо, позикцию должен контролировать Трекер
+     */
+//    public static void changePosition(){
+//         int count = getPosition();
+//         count ++;
+//         setPosition(count);
+//        System.out.println("Теперь позиция равна " + getPosition() );
+//    }
 
 }

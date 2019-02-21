@@ -1,7 +1,5 @@
 package trainingFromOleg.trackerProject;
 
-import java.util.*;
-
 public class StartUI {
 
     /**
@@ -74,9 +72,14 @@ public class StartUI {
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
 
-        Item.setName( this.consoleInput.ask("Введите имя заявки :"));
-        Item.setDesc(this.consoleInput.ask("Введите описание заявки :"));
-        Item item = new Item(Item.getPosition() , Item.getName(), Item.getDesc(), Item.generateId());
+        /**
+         * Зачем так  то делать? Лишнее наделал
+         */
+//        Item.setName( this.consoleInput.ask("Введите имя заявки :"));
+        String name = this.consoleInput.ask("Введите имя заявки :");
+//        Item.setDesc(this.consoleInput.ask("Введите описание заявки :"));
+        String description = this.consoleInput.ask("Введите описание заявки :");
+        Item item = new Item(name, description, Item.generateId());
         this.tracker.add(item);
     }
 

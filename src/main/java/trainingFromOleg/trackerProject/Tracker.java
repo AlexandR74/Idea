@@ -9,8 +9,16 @@ public class Tracker {
      * Массив для хранение заявок.
      */
 
-    public static final Item[] items = new Item[5];
-    public static final Item[] swapItems = new Item[5];
+    /*
+    * Отжиг! просто отжиг! Читай еще раз как работает ключевое слово final Ты сделал два неизменямых массива и пытаешь туда что то пложить:)
+    * */
+//    public static final Item[] items = new Item[5];
+//    public static final Item[] swapItems = new Item[5];
+
+    public Item[] items = new Item[5];
+    public Item[] swapItems = new Item[5];
+
+    private int position = 0;
 
     //-------------------Методы------------------------
 
@@ -19,26 +27,9 @@ public class Tracker {
         System.out.println("Мы в методе ADD");
         // Прилепить позицию к номеру new массива()
         // проверить список
-        System.out.println("выполняем команду: item.getPosition() ,  = " + item.getPosition());
-        int number = item.getPosition();
-        System.out.println("int number = item.getPosition(); = " + number);
-        Item.changePosition();
-        this.items[number] = item; // <<<<<<<<<<<<  КАКОЙ ИМЕННО ITEM ТАМ ?
 
-        System.out.println("Состояние переменных");
-        System.out.println("position = " + Item.getPosition()+";" + "Name = " + Item.getName()+";"+"Desc = "+ Item.getDesc()+";"+
-                "ID =" + Item.getId()+";");
-        System.out.println("обнуление!!! (окромя позиции)");
-        Item.setDesc("");
-        Item.setName("");
-        Item.setId("");
-        System.out.println("position = " + Item.getPosition()+";" + "Name = " + Item.getName()+";"+"Desc = "+ Item.getDesc()+";"+
-                "ID =" + Item.getId()+";");
-        System.out.println("positionITEMS[] = " + this.items[number].getPosition()+";" + "NameITEMS[] = " + this.items[number].getName()+";"+"DescITEMS[] = "+ this.items[number].getDesc()+";"+
-                "IDItems[] =" + this.items[number].getId()+";");
-
-
-
+        items[position] = item; // <<<<<<<<<<<<  КАКОЙ ИМЕННО ITEM ТАМ ?
+        position++;
         return item;   // <<<<<<<<<<<<<<<<<ПОЧЕМУ ITEM ВЕДЬ МЫ ИЗГОТОВИЛИ ITEMS?
     }
 
@@ -46,28 +37,19 @@ public class Tracker {
     //Метод Findall
     public Item[] findAll() {
         System.out.println("Метод findAll");
-        int j =0;
 
 
-       //перебор и заполнение элементов
+        //перебор и заполнение элементов
 
-        System.out.println("перебор и заполнение элементов");
-        for (int i = 0; i <= 4; i++) {
-            if (this.items[i].getId()!=null){
-                 this.swapItems[j].setId(this.items[i].getId());
-                this.swapItems[j].setName(this.items[i].getName());
-                this.swapItems[j].setDesc(this.items[i].getDesc());
-
-                System.out.println(   "name = " +this.swapItems[j].getName()+";"+ ""+
-                                    "desc = " +this.swapItems[j].getDesc()+";"+ ""+
-                                     "id = " +this.swapItems[j].getId()+";"+ "");
-                j++;
+        System.out.println("перебор и заполнение элементов"); //Какое заполнение?! Просто верни заявку:)
+        //Если у тебя есть массив на 5 элементов, а ты туда положил 1 то что лежит в остальных 4х?:)
+        for (int i = 0; i < position; i++) {
+            if (items[i].getId() != null) {
+                swapItems[items[i].getPosition()] = items[i];
             }
         }
         return swapItems;
     }
-
-
 
 
     /**
@@ -75,8 +57,8 @@ public class Tracker {
      */
     public final void printSwapItems() {
 
-        for (int i = 0 ; this.swapItems[i]!=null ; i++)
-                System.out.println("ID = " + this.swapItems[i].getId()+"; " +  " Name = " + this.swapItems[i].getName()+"; " + " Desc = "
-                        +this.swapItems[i].getDesc()+"; "+"position = "+ this.swapItems[i].getPosition()+"; ");
+        for (int i = 0; this.swapItems[i] != null; i++)
+            System.out.println("ID = " + this.swapItems[i].getId() + "; " + " Name = " + this.swapItems[i].getName() + "; " + " Desc = "
+                    + this.swapItems[i].getDesc() + "; " + "position = " + this.swapItems[i].getPosition() + "; ");
     }
 }
