@@ -1,6 +1,6 @@
 package trainingFromOleg.trackerProject;
 
-//import com.sun.tools.javac.jvm.Items;
+
 
 public class Tracker {
 
@@ -9,11 +9,6 @@ public class Tracker {
      * Массив для хранение заявок.
      */
 
-    /*
-    * Отжиг! просто отжиг! Читай еще раз как работает ключевое слово final Ты сделал два неизменямых массива и пытаешь туда что то пложить:)
-    * */
-//    public static final Item[] items = new Item[5];
-//    public static final Item[] swapItems = new Item[5];
 
     public Item[] items = new Item[5];
     public Item[] swapItems = new Item[5];
@@ -24,28 +19,79 @@ public class Tracker {
 
     //Метод ADD
     public Item add(Item item) {
-        System.out.println("Мы в методе ADD");
-        // Прилепить позицию к номеру new массива()
-        // проверить список
-
-        items[position] = item; // <<<<<<<<<<<<  КАКОЙ ИМЕННО ITEM ТАМ ?
+        System.out.println("метод ADD");
+        this.items[position] = item;
         position++;
-        return item;   // <<<<<<<<<<<<<<<<<ПОЧЕМУ ITEM ВЕДЬ МЫ ИЗГОТОВИЛИ ITEMS?
+        return item;
     }
 
 
     //Метод Findall
     public Item[] findAll() {
         System.out.println("Метод findAll");
+        for (int i = 0; i < this.items.length; i++) {
+
+            if (this.items[i].getId().equals(this.swapItems[i].getId())) {
+            this.swapItems[i] = this.items[i];
+            }
+        }
+        return swapItems;
+    }
 
 
-        //перебор и заполнение элементов
+    // метод Replace
+    public boolean replace(String id, Item item2Cons) {
 
-        System.out.println("перебор и заполнение элементов"); //Какое заполнение?! Просто верни заявку:)
-        //Если у тебя есть массив на 5 элементов, а ты туда положил 1 то что лежит в остальных 4х?:)
-        for (int i = 0; i < position; i++) {
-            if (items[i].getId() != null) {
-                swapItems[items[i].getPosition()] = items[i];
+        boolean result = false;
+
+        for (int i = 0; i < this.items.length; i++){
+
+                if (this.items[i].getId().equals(id)) {
+                    this.items[i].setName(item2Cons.getName());
+                    this.items[i].setDesc(item2Cons.getDesc());
+                    result = true;
+                }
+        }
+        return result;
+    }
+
+
+    //метод findById
+    public  Item findById (String id){
+        //  для itemresult мы создали конструктор без параметров
+        Item itemresult;
+
+        for (int i = 0; i < this.items.length; i++) {
+            if ( this.items[i].getId().equals(id)){
+                itemresult=this.items[i];
+                return itemresult;
+            }
+        }
+        return null;
+    }
+
+
+    // метод delete   с помощью arrayCopy().
+    public boolean delete(String id) {
+        boolean result = false;
+        //перебор элементов
+        for (int i = 0; i < this.items.length; i++) {
+            //сравнение id
+            if (this.items[i].getId().equals(id)) {
+                System.arraycopy(items, i+1, items, i, (items.length-i));//ПРОВЕРИТЬ
+                result = true;
+            }
+        }
+        return result;
+    }
+
+
+    //Метод findByName
+    public Item[] findByName (String key){
+
+        for (int i = 0; i < this.items.length; i++) {
+            if (this.items[i].getName().equals(key)) {
+                this.swapItems[i] = this.items[i];
             }
         }
         return swapItems;
@@ -55,10 +101,17 @@ public class Tracker {
     /**
      * printItem распечтает item
      */
-    public final void printSwapItems() {
+    public  void printItems(Item[] items ) {
 
-        for (int i = 0; this.swapItems[i] != null; i++)
-            System.out.println("ID = " + this.swapItems[i].getId() + "; " + " Name = " + this.swapItems[i].getName() + "; " + " Desc = "
-                    + this.swapItems[i].getDesc() + "; " + "position = " + this.swapItems[i].getPosition() + "; ");
+        for (int i = 0; this.items[i] != null; i++) {
+            System.out.println("ID = " + this.items[i].getId() + "; " + " Name = " + this.items[i].getName() + "; " + " Desc = "
+                    + this.items[i].getDesc() + "; ");
+        }
+    }
+
+    public  void cleansSwapItems (){
+        for (int i = 0; this.swapItems[i] != null; i++){
+            delete(this.swapItems[i].getId());
+        }
     }
 }

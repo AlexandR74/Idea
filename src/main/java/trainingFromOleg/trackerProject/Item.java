@@ -8,9 +8,7 @@ public class Item {
      */
 
     private int position;
-    /*
-    * Еще раз перечитай внимтально как работают статики и помймешь ниже был полный бред
-    * */
+
     private String id;
 
     /**
@@ -46,16 +44,14 @@ public class Item {
         this.desc = desc;
     }
 
-    // конструктор с 3мя параметрами Вот это вообще был "высший пилотаж":) (когда  у тебя конструктор с 4мя параметрами но ты говоришь что три)
+    // конструктор с 3мя параметрами
     public Item(String name, String desc, String id){
         this.name = name;
         this.desc = desc;
         this.id = id;
     }
 
-    /**
-     * Зачем статики?! Никода сеттеры не делаются статиками
-     */
+
     public  int getPosition() { return position;  }
     public  void setPosition(int newPosition) { position = newPosition; }
 
@@ -106,14 +102,6 @@ public class Item {
         return id;
     }
 
-    /**
-     * Это не надо, позикцию должен контролировать Трекер
-     */
-//    public static void changePosition(){
-//         int count = getPosition();
-//         count ++;
-//         setPosition(count);
-//        System.out.println("Теперь позиция равна " + getPosition() );
-//    }
+
 
 }
