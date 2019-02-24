@@ -105,9 +105,10 @@ public class StartUI {
         String name = this.consoleInput.ask("Введите новое имя заявки :");
         String desc = this.consoleInput.ask("Введите новое описание заявки :");
         Item item2Cons = new Item(name, desc);
-        String id = this.consoleInput.ask("Введите ID старой заявки :");
+
+        String id = this.consoleInput.ask("Введите ID старой заявки (цифрами) :");
         this.tracker.replace( id, item2Cons);
-        //this.tracker.findAll();  // Для проверки!!! после проверки удалить
+        this.tracker.findAll();  // Для проверки!!! после проверки удалить
     }
 
 
@@ -120,10 +121,7 @@ public class StartUI {
         System.out.println("------------Удаление  заявки --------------");
         String id = this.consoleInput.ask("Введите ID  заявки :");
         this.tracker.delete(id);
-
         this.tracker.printItems(this.tracker.items);
-        tracker.cleansSwapItems(); //чистка
-        //this.tracker.findAll();  // Для проверки!!! после проверки удалить
     }
 
 
@@ -149,8 +147,7 @@ public class StartUI {
         System.out.println("------------Поиск заявки по ID  --------------");
         String id = this.consoleInput.ask("Введите ID  заявки (просто цифрами):");
         this.tracker.findById(id);
-
-
+        tracker.cleansSwapItems(); //чистка
         }
 
 

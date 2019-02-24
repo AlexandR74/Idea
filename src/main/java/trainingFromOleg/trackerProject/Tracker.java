@@ -15,7 +15,7 @@ public class Tracker {
 
 
     public static Item[] items = new Item[5];
-    public Item[] swapItems = new Item[5];
+    public static Item[] swapItems = new Item[5];
 
 
 
@@ -26,43 +26,22 @@ public class Tracker {
     public Item add(Item item) {
         System.out.println("запущен ADD");
         System.out.println("генерируем чертову позицию");
+
         // Важный блок
         int number = item.generatePosition(item);
         System.out.println(" внутри item должна сохранииться position: "+ item.getPosition() +"; TrigPos: " + item.isTrigPos()+";" );
         this.items[number] = item;
         // Конец важного блока
-
-//        boolean count = false;
-//
-//        for (int i = 0; i < this.items.length; i++){
-//
-//            int arrId = parseInt(this.items[i].getId());
-//            System.out.println("arrId = " + arrId);
-//
-//            if (arrId == 0){
-//                this.items[i] = item;
-//
-//                System.out.println(" ");
-//            count = true;
-//            }
-//            if (count){
-//                System.out.println("заявка успешна добавлена");
-//            }
-//
-//        }
-
-        return item;
+         return item;
     }
 
 
     //Метод Findall
     public Item[] findAll() {
         System.out.println(" метод findAll");
-
         for (int i = 0; i < this.items.length; i++) {
-
             if (items[i] != null) {
-               this.swapItems[i] = this.items[i];
+                this.swapItems[i] = this.items[i];
             }
         }
         return swapItems;
@@ -73,14 +52,17 @@ public class Tracker {
     public boolean replace(String id, Item item2Cons) {
 
         boolean result = false;
+        this.swapItems[0] =  item2Cons;
 
         for (int i = 0; i < this.items.length; i++){
 
-                if (this.items[i].getId().equals(id)) {
-                    this.items[i].setName(item2Cons.getName());
-                    this.items[i].setDesc(item2Cons.getDesc());
-                    result = true;
-                }
+            if (this.items[i].getId().equals(id)) {
+                System.out.println("мы в цикле");
+
+                this.items[i].setName(this.swapItems[0].getName());
+                this.items[i].setDesc(this.swapItems[0].getDesc());
+                result = true;
+            }
         }
         return result;
     }
@@ -89,44 +71,63 @@ public class Tracker {
     //метод findById
     public  Item findById (String id){
         //  для itemresult мы создали конструктор без параметров
-        Item itemresult;
+            boolean result = false;
+            System.out.println("result = " + result);
 
-        for (int i = 0; i < this.items.length; i++) {
+            for (int i = 0; i < this.items.length; i++) {
+                boolean swapB = (this.items[i] == null) ? false : true;
 
-            // пришлось вывести сравниваемые элементы в примитивы (id)
-            int arrId = parseInt(this.items[i].getId());
-            int newId = parseInt(id);
-            System.out.println(arrId);
-
-            if (arrId == newId){
-                itemresult=this.items[i];
-                return itemresult;
+                if ( (swapB) && (this.items[i].getId().equals(id) )){
+                System.out.println("нашли" );
+                return this.items[i];
             }
+                if (result) {
+                    System.out.println("точно нашли");
+                }
+                else{
+                        System.out.println("не нашли");
+                    }
         }
         return null;
     }
 
 
-    // метод delete
+    /**
+     *
+     * @param id
+     * @return
+     *
+     * 1 - проверка на пустую зявку через swapB
+     * 2 - сдвиг стека на 1 позицию влево, начиная с найденой по ID
+     * 3 - ужасно большой, уродливый код, но безопасный. SOUPы оставляем до прогона тестов.
+     */
+
     public boolean delete(String id) {
         System.out.println("метод delete");
+
         boolean result = false;
-        //перебор элементов
+
         System.out.println("result = " + result);
         for (int i = 0; i < this.items.length; i++) {
-            //сравнение id
+            boolean swapB = (this.items[i] == null) ? false : true;
 
-            System.out.println(" if ((this.items[i].getId().equals(id) )) = "  +((this.items[i].getId().equals(id) )) );
-            if ((this.items[i].getId().equals(id) )){
-
-            System.arraycopy(this.items, i + 1, this.swapItems, 0, (this.items.length - i));//ПРОВЕРИТЬ
-            System.arraycopy(this.swapItems, 0,this.items, i,this.swapItems.length-1);
-            result = true;
+            if ( (swapB) && (this.items[i].getId().equals(id) )){
+                System.out.println("мы в цикле");
+                System.out.println(" и запускаем новый цикл с найденной заявки ");
+                for ( int j = i+1; j < this.items.length; j++  ){
+                    System.out.println("элемент № " + j +"; Всего -" + this.items.length +" эл-в.");
+                    this.items[j-1] = this.items[j];
+                    System.out.println("перехерачили очередной элемент");
+                 }
+                //хрень внизу не работает... вот незадача.
+                //System.arraycopy(this.items, i + 1, this.swapItems, 0, (this.items.length - i));
+                //System.arraycopy(this.swapItems, 0,this.items, i,this.swapItems.length-1);
+                result = true;
             }
         }
 
         return result;
-        }
+    }
 
 
 
