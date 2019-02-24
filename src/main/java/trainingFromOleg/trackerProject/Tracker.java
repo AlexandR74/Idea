@@ -71,25 +71,29 @@ public class Tracker {
     //метод findById
     public  Item findById (String id){
         //  для itemresult мы создали конструктор без параметров
+        Item itemresult;
+
+
             boolean result = false;
-            System.out.println("result = " + result);
+            System.out.println("Сначала result = " + result);
 
             for (int i = 0; i < this.items.length; i++) {
                 boolean swapB = (this.items[i] == null) ? false : true;
 
-                if ( (swapB) && (this.items[i].getId().equals(id) )){
-                System.out.println("нашли" );
-                return this.items[i];
-            }
-                if (result) {
-                    System.out.println("точно нашли");
+                if ((swapB) && (this.items[i].getId().equals(id))) {
+                    System.out.println(" заявка по ID  найдена");
+                    itemresult = this.items[i];
+                    result = true;
+                    return itemresult;
+
                 }
-                else{
-                        System.out.println("не нашли");
-                    }
+                if (!result) {
+                    System.out.println("заявка по ID не найдена");
+                }
+            }
+            return null;   // спросить  про корректность этой фигни   и как ее обезопасить
         }
-        return null;
-    }
+
 
 
     /**
