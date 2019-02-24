@@ -108,7 +108,7 @@ public class StartUI {
 
         String id = this.consoleInput.ask("Введите ID старой заявки (цифрами) :");
         this.tracker.replace( id, item2Cons);
-        this.tracker.findAll();  // Для проверки!!! после проверки удалить
+        this.tracker.printItems(this.tracker.items);// Для проверки!!! после проверки удалить
     }
 
 

@@ -56,13 +56,20 @@ public class Tracker {
 
         for (int i = 0; i < this.items.length; i++){
 
-            if (this.items[i].getId().equals(id)) {
+            boolean swapB = (this.items[i] == null) ? false : true;
+            if ((swapB) &&(this.items[i].getId().equals(id))) {
                 System.out.println("мы в цикле");
+                String name = this.swapItems[0].getName();
+                String desc = this.swapItems[0].getDesc();
 
-                this.items[i].setName(this.swapItems[0].getName());
-                this.items[i].setDesc(this.swapItems[0].getDesc());
+                System.out.println("name =  "+name +": desc ="+desc +";");
+
+                this.items[i].setName(name);
+                this.items[i].setDesc(desc);
+
                 result = true;
             }
+
         }
         return result;
     }
@@ -72,20 +79,15 @@ public class Tracker {
     public  Item findById (String id){
         //  для itemresult мы создали конструктор без параметров
         Item itemresult;
-
-
             boolean result = false;
             System.out.println("Сначала result = " + result);
-
             for (int i = 0; i < this.items.length; i++) {
                 boolean swapB = (this.items[i] == null) ? false : true;
-
                 if ((swapB) && (this.items[i].getId().equals(id))) {
                     System.out.println(" заявка по ID  найдена");
                     itemresult = this.items[i];
                     result = true;
                     return itemresult;
-
                 }
                 if (!result) {
                     System.out.println("заявка по ID не найдена");
@@ -97,10 +99,9 @@ public class Tracker {
 
 
     /**
-     *
+     *Метод DELETE
      * @param id
      * @return
-     *
      * 1 - проверка на пустую зявку через swapB
      * 2 - сдвиг стека на 1 позицию влево, начиная с найденой по ID
      * 3 - ужасно большой, уродливый код, но безопасный. SOUPы оставляем до прогона тестов.
@@ -108,16 +109,13 @@ public class Tracker {
 
     public boolean delete(String id) {
         System.out.println("метод delete");
-
         boolean result = false;
-
         System.out.println("result = " + result);
         for (int i = 0; i < this.items.length; i++) {
             boolean swapB = (this.items[i] == null) ? false : true;
 
             if ( (swapB) && (this.items[i].getId().equals(id) )){
-                System.out.println("мы в цикле");
-                System.out.println(" и запускаем новый цикл с найденной заявки ");
+                System.out.println("мы в цикле и запускаем новый цикл с найденной заявки ");
                 for ( int j = i+1; j < this.items.length; j++  ){
                     System.out.println("элемент № " + j +"; Всего -" + this.items.length +" эл-в.");
                     this.items[j-1] = this.items[j];
@@ -134,17 +132,24 @@ public class Tracker {
     }
 
 
-
-
     //Метод findByName
     public Item[] findByName (String key){
 
+        boolean result = false;
+        System.out.println("Сначала result = " + result);
         for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i].getName().equals(key)) {
-                this.swapItems[i] = this.items[i];
+            boolean swapB = (this.items[i] == null) ? false : true;
+            if ((swapB) && (this.items[i].getName().equals(key))) {
+                System.out.println(" заявка по NAME  найдена");
+                    for (int j =0; j < this.swapItems.length ; j++)
+                        swapItems[j] = this.items[i];
+                        result = true;
+                }
+            if (!result) {
+                System.out.println("заявка по NAME не найдена");
             }
         }
-        return swapItems;
+        return null;   // спросить  про корректность этой фигни   и как ее обезопасить
     }
 
 
