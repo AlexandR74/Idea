@@ -116,12 +116,9 @@ public class Tracker {
         for (int i = 0; i < this.items.length; i++) {
             //сравнение id
 
+            System.out.println(" if ((this.items[i].getId().equals(id) )) = "  +((this.items[i].getId().equals(id) )) );
+            if ((this.items[i].getId().equals(id) )){
 
-            int arrId = parseInt(this.items[i].getId());
-            int newId = parseInt(id);
-            System.out.println(arrId);
-
-            if (arrId == newId) {
             System.arraycopy(this.items, i + 1, this.swapItems, 0, (this.items.length - i));//ПРОВЕРИТЬ
             System.arraycopy(this.swapItems, 0,this.items, i,this.swapItems.length-1);
             result = true;

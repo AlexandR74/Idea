@@ -129,10 +129,8 @@ public class Item {
             System.out.println("Запущен цикл перебора массива");
             int swapPos=i;
             System.out.println(" элемент № " +swapPos);
-            Boolean booSwapPos = Tracker.items[i].isTrigPos();
-             boolean SwapB = (boolean) booSwapPos;
+            boolean SwapB = (Tracker.items[i] == null) ? false : true;
             System.out.println(" ранее позиция назначалась? = " +SwapB);
-
             if (SwapB == false) {
                 System.out.println("назначаем позицию = " +swapPos);
                 item.setPosition(swapPos);
