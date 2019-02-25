@@ -15,9 +15,10 @@ public class Tracker {
     //-------------------Методы------------------------
 
     /**
-     * Метод ADD: 1)генерирует № позиции (пожаробезопасно).
+     * Метод ADD: Добавляет заявку (а для этого он):
+     *            1)генерирует № позиции (пожаробезопасно).
      *            2)для безопасной генерации введен тригер позиции - isTrigPos  (отвечает:назначалась ли ранее позиция)
-     *            3)добавление item в массив items
+     *            3)добавление item в массив items.
      * @param item
      * @return
      */
@@ -33,7 +34,13 @@ public class Tracker {
     }
 
 
-    //Метод Findall
+    /**
+     * Метод findAll: Выводит на экран Все зявки. (а для этого он):
+     *                1) Копирует все (кроме пустых) завки в дублирующий массив.
+     *                2) Отправляет дублирующий массив на выход метода.
+     *                3) В StartUI дублирующий массив распечатывается методом  printItems.
+     * @return swapItems
+     */
     public Item[] findAll() {
         System.out.println(" метод findAll");
         for (int i = 0; i < this.items.length; i++) {
@@ -45,7 +52,17 @@ public class Tracker {
     }
 
 
-    // метод Replace
+    /**
+     *  Метод replace: Замена Имени и Описание заявки, найденной по id.  (а для этого он):
+     *                  1) добавляет имя и описание новой завки в дублирующий массив (первый элемент).
+     *                  2) находит перебором заявку с нужным id в основном массиве заявок.
+     *                  3) производит выгрузку имени,описания из дублирующего массива в примитив переменные
+     *                      добавление имени, описания в найденный элемент основного массива.
+     *                  4) выводит из метода true если замена заявки произошла.
+     * @param id
+     * @param item2Cons
+     * @return boolean
+     */
     public boolean replace(String id, Item item2Cons) {
         System.out.println("запущен Replace");
         boolean result = false;
@@ -71,12 +88,18 @@ public class Tracker {
     }
 
 
-    //метод findById
+    /**
+     * Метод findById :  Находит Заявку по ID  и возвращает ее, не распечатывая. (а для этого он):
+     *                   1) Поиск по основному массиву перебором на сравнение по id
+     *                   2) Копирование заявки в ссылочную переменную itemresult
+     *                   3) возврат из метода itemresult если заявка найдена. else null.
+     * @param id
+     * @return Item item
+     */
     public  Item findById (String id){
         //  для itemresult мы создали конструктор без параметров
         Item itemresult;
             boolean result = false;
-            System.out.println("Сначала result = " + result);
             for (int i = 0; i < this.items.length; i++) {
                 boolean swapB = (this.items[i] == null) ? false : true;
                 if ((swapB) && (this.items[i].getId().equals(id))) {
@@ -95,7 +118,11 @@ public class Tracker {
 
 
     /**
-     *Метод DELETE
+     *Метод delete: Должен находить заявку по id.
+     *               Удалять ее, сдвигая хвост основного массива заявки на 1 позицию влево.(а для этого он):
+     *               1) Перебирает массив и находит заявку по Id
+     *               2) Сдвигает заявки (начиная с найденного +1) влево, затирает найденную заявку.
+     *               3) возвращает true при успешном удалении завки
      * @param id
      * @return
      * 1 - проверка на пустую зявку через swapB
@@ -106,7 +133,6 @@ public class Tracker {
     public boolean delete(String id) {
         System.out.println("метод delete");
         boolean result = false;
-        System.out.println("result = " + result);
         for (int i = 0; i < this.items.length; i++) {
             boolean swapB = (this.items[i] == null) ? false : true;
 
@@ -115,7 +141,7 @@ public class Tracker {
                 for ( int j = i+1; j < this.items.length; j++  ){
                     System.out.println("элемент № " + j +"; Всего -" + this.items.length +" эл-в.");
                     this.items[j-1] = this.items[j];
-                    System.out.println("перехерачили очередной элемент");
+                    System.out.println("переписали очередной элемент");
                  }
                 //хрень внизу не работает... вот незадача.
                 //System.arraycopy(this.items, i + 1, this.swapItems, 0, (this.items.length - i));
@@ -127,11 +153,18 @@ public class Tracker {
     }
 
 
-    //Метод findByName
+    /**
+     * Метод findByName: Находит в массиве заявок все заявки имеющие совпадение по Имени.
+     *                   Выводит их отдельно.(а для этого он):
+     *                   1) Идет перебором по элементам массива сравнивая по Имени.
+     *                   2) Копирует заявку имеющую совпадение по имени в дублирующий массив.
+     *                   3) Отправляет на вывод метода дублирующий массив с найденными заявками.
+     * @param key
+     * @return
+     */
     public Item[] findByName (String key){
 
         boolean result = false;
-        System.out.println("Сначала result = " + result);
         for (int i = 0; i < this.items.length; i++) {
             boolean swapB = (this.items[i] == null) ? false : true;
             if ((swapB) && (this.items[i].getName().equals(key))) {
@@ -149,7 +182,8 @@ public class Tracker {
 
 
     /**
-     * printItems Выводит на экран  items по строчно
+     *  Служеблный метод printItems Выводит на экран  items по строчно
+     *
      */
     public  void printItems(Item[] items ) {
         System.out.println("Запущен printItems");
@@ -170,6 +204,9 @@ public class Tracker {
         }
     }
 
+    /**
+     * Служебный метод cleansSwapItems(): производит удаление всех элементов во вспомагательном массиве swapItems;
+     */
     public  void cleansSwapItems (){
         for (int i = 0; i < this.swapItems.length; i++){
             this.swapItems[i] = null;

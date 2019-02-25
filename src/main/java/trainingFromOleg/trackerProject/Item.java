@@ -45,12 +45,10 @@ public class Item {
      */
     private String[] comments;
 
-
-
+    // ------- Блок конструкторов----------
     // конструктор без парметров
     public Item (){
     }
-
 
     // конструктор с 2мя параметрами
     public Item(String name, String desc){
@@ -107,28 +105,29 @@ public class Item {
 
 
 
+    //--------------Блок методов ----------------
     /**
      * Метод генерирует уникальный ключ для заявки.
      * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
      * @return Уникальный ключ.
      */
      public static String generateId(){
-
         Integer idInt = (0 + (int) (Math.random() * 10000));
         String id = idInt.toString();
         return id;
     }
 
     /**
-     * Метод генерирует позицию
+     *
+     * Служебный Метод generatePosition:  генирует позицию для метода ADD:
+     *      1) Перебором находит в основном массиве номер первого Пустого элемента
+     *      2) назначает этот номер в виде позиции для добавленной заявки.
      */
-
     public int generatePosition (Item item) {
         System.out.println("метод генерации позиции / generatePosition");
         for (int i = 0; i < Tracker.items.length; i++) {
-            System.out.println("Запущен цикл перебора массива");
-            int swapPos=i;
-            System.out.println(" элемент № " +swapPos);
+             int swapPos=i;
+
             boolean swapB = (Tracker.items[i] == null) ? false : true;
             System.out.println(" ранее позиция назначалась? = " +swapB);
             if (swapB == false) {
