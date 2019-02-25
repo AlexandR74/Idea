@@ -76,8 +76,8 @@ public class StartUI {
         Item item = new Item(name, desc, Item.generateId());
         this.tracker.add(item);
 
-        this.tracker.printItems(Tracker.items);
-
+        System.out.println("Проверочный вывод № 001:");
+        this.tracker.printItems(Tracker.items); // Это проверочный вывод № 001. закоментировать при ненадобности
     }
 
     /**
@@ -85,13 +85,10 @@ public class StartUI {
      */
 
     private void findAllItem() {
-
         System.out.println("------------ Получение списка всех заявок  --------------");
         this.tracker.findAll();
-        this.tracker.printItems(this.tracker.swapItems);
-        // tracker.cleansSwapItems(); //чистка выводного массива
+        this.tracker.printItems(this.tracker.swapItems); // штатный вывод на экран в рамках ТЗ.
         System.out.println("------------конец списка заявок -----------");
-
     }
 
 
@@ -100,7 +97,6 @@ public class StartUI {
      */
 
     private void replaceItem() {
-
         System.out.println("------------Замена  заявки --------------");
         String name = this.consoleInput.ask("Введите новое имя заявки :");
         String desc = this.consoleInput.ask("Введите новое описание заявки :");
@@ -108,7 +104,9 @@ public class StartUI {
 
         String id = this.consoleInput.ask("Введите ID старой заявки (цифрами) :");
         this.tracker.replace( id, item2Cons);
-        this.tracker.printItems(this.tracker.items);// Для проверки!!! после проверки удалить
+
+        System.out.println("Проверочный вывод № 002:");
+        this.tracker.printItems(this.tracker.items); // Это проверочный вывод № 002. закоментировать при ненадобности
     }
 
 
@@ -119,9 +117,11 @@ public class StartUI {
     private void deleteItem() {
 
         System.out.println("------------Удаление  заявки --------------");
-        String id = this.consoleInput.ask("Введите ID  заявки :");
+        String id = this.consoleInput.ask("Введите ID  заявки (цифрами):");
         this.tracker.delete(id);
-        this.tracker.printItems(this.tracker.items);
+
+        System.out.println("Проверочный вывод № 003:");
+        this.tracker.printItems(this.tracker.items);// Это проверочный вывод № 003. закоментировать при ненадобности
     }
 
 
@@ -132,23 +132,21 @@ public class StartUI {
         System.out.println("------------Поиск заявки по Name --------------");
         String name = this.consoleInput.ask("Введите Name:");
         this.tracker.findByName(name);
-        this.tracker.printItems(this.tracker.swapItems);
 
-        tracker.cleansSwapItems(); //чистка
+        this.tracker.printItems(this.tracker.swapItems);// Штатный вывод на экран в рамках ТЗ.
+
+        tracker.cleansSwapItems(); //чистка дублирующего массива.
     }
 
 
     /**
      * Метод реализует получение заявки по id
      */
-
     private void findByIdItem() {
-
         System.out.println("------------Поиск заявки по ID  --------------");
         String id = this.consoleInput.ask("Введите ID  заявки (просто цифрами):");
         this.tracker.findById(id);
-        tracker.cleansSwapItems(); //чистка
-        }
+    }
 
 
     private void showMenu() {

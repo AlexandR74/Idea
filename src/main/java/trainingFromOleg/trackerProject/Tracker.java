@@ -1,11 +1,6 @@
 package trainingFromOleg.trackerProject;
 
 
-import java.util.Arrays;
-
-import static java.lang.Integer.numberOfLeadingZeros;
-import static java.lang.Integer.parseInt;
-
 public class Tracker {
 
 
@@ -17,19 +12,21 @@ public class Tracker {
     public static Item[] items = new Item[5];
     public static Item[] swapItems = new Item[5];
 
-
-
-
     //-------------------Методы------------------------
 
-    //Метод ADD
+    /**
+     * Метод ADD: 1)генерирует № позиции (пожаробезопасно).
+     *            2)для безопасной генерации введен тригер позиции - isTrigPos  (отвечает:назначалась ли ранее позиция)
+     *            3)добавление item в массив items
+     * @param item
+     * @return
+     */
     public Item add(Item item) {
-        System.out.println("запущен ADD");
-        System.out.println("генерируем чертову позицию");
+        System.out.println("Запущен метод ADD," + " генерируем позицию.");
 
         // Важный блок
         int number = item.generatePosition(item);
-        System.out.println(" внутри item должна сохранииться position: "+ item.getPosition() +"; TrigPos: " + item.isTrigPos()+";" );
+        System.out.println(" внутри item должна сохранииться position: "+ item.getPosition() +"; trigPos: " + item.isTrigPos()+";" );
         this.items[number] = item;
         // Конец важного блока
          return item;
@@ -50,7 +47,7 @@ public class Tracker {
 
     // метод Replace
     public boolean replace(String id, Item item2Cons) {
-
+        System.out.println("запущен Replace");
         boolean result = false;
         this.swapItems[0] =  item2Cons;
 
@@ -69,7 +66,6 @@ public class Tracker {
 
                 result = true;
             }
-
         }
         return result;
     }
@@ -127,7 +123,6 @@ public class Tracker {
                 result = true;
             }
         }
-
         return result;
     }
 
