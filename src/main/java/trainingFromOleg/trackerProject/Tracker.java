@@ -9,8 +9,8 @@ public class Tracker {
      */
 
 
-    public static Item[] items = new Item[5];
-    public static Item[] swapItems = new Item[5];
+    public  static Item[] items = new Item[5];
+    public  static Item[] swapItems = new Item[5];
 
     //-------------------Методы------------------------
 
@@ -26,8 +26,7 @@ public class Tracker {
         System.out.println("Запущен метод ADD," + " генерируем позицию.");
 
         // Важный блок
-        int number = item.generatePosition(item);
-        System.out.println(" внутри item должна сохранииться position: "+ item.getPosition() +"; trigPos: " + item.isTrigPos()+";" );
+        int number = generatePosition(item);
         this.items[number] = item;
         // Конец важного блока
          return item;
@@ -44,7 +43,7 @@ public class Tracker {
     public Item[] findAll() {
         System.out.println(" метод findAll");
         for (int i = 0; i < this.items.length; i++) {
-            if (items[i] != null) {
+            if (this.items[i] != null) {
                 this.swapItems[i] = this.items[i];
             }
         }
@@ -179,6 +178,38 @@ public class Tracker {
         }
         return null;   // спросить  про корректность этой фигни   и как ее обезопасить
     }
+
+
+    /**
+     *
+     * Служебный Метод generatePosition:  генирует позицию для метода ADD:
+     *      1) Перебором находит в основном массиве номер первого Пустого элемента
+     *      2) назначает этот номер в виде позиции для добавленной заявки.
+     */
+    public int generatePosition (Item item) {
+        System.out.println("метод генерации позиции / generatePosition");
+        for (int i = 0; i < this.items.length; i++) {
+            int swapPos=i;
+
+            boolean swapB = (this.items[i] == null) ? false : true;
+            System.out.println(" ранее позиция назначалась? = " +swapB);
+            if (swapB == false) {
+                System.out.println("назначаем позицию = " +swapPos);
+                item.setPosition(swapPos);
+                item.setTrigPos(true);
+                return  swapPos;
+            }
+        }
+        return -1; // Надо посоветоваться как правильно делать.
+        /**
+         * если поставить null то это не выдаст ошибку когда она будет.
+         * если поставить -1  то выдаст ошибку, так как генерация передается в номер массива при инициализации
+         */
+    }
+
+
+
+
 
 
     /**
