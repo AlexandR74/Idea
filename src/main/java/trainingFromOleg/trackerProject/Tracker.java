@@ -1,5 +1,5 @@
 package trainingFromOleg.trackerProject;
-
+import java.util.*;
 
 public class Tracker {
 
@@ -143,8 +143,10 @@ public class Tracker {
                     System.out.println("переписали очередной элемент");
                  }
                 //хрень внизу не работает... вот незадача.
-                //System.arraycopy(this.items, i + 1, this.swapItems, 0, (this.items.length - i));
-                //System.arraycopy(this.swapItems, 0,this.items, i,this.swapItems.length-1);
+                //System.arraycopy(this.items, i+1, this.swapItems, 0, (this.items.length - i));
+                // System.arraycopy(this.swapItems, 0,this.items, i,this.swapItems.length);
+
+
                 result = true;
             }
         }
